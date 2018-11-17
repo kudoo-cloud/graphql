@@ -1,0 +1,73 @@
+fragment PageInfoFragment on PageInfo {
+  endCursor
+  startCursor
+  hasNextPage
+  hasPreviousPage
+}
+
+fragment MoneyFragment on Money {
+  currency
+  isPercent
+  value
+}
+
+fragment DiscountFragment on Discount {
+  label
+  order
+  value
+}
+
+fragment EmailFragment on Email {
+  name
+  value
+}
+
+fragment ContactNumberFragment on ContactNumber {
+  countryCode
+  nationalNumber
+  type
+}
+
+fragment ContactFragment on Contact {
+  emails {
+    ...EmailFragment
+  }
+  names
+  numbers {
+    ...ContactNumberFragment
+  }
+  surname
+  websites
+}
+
+fragment AddressFragment on Address {
+  contact {
+    ...ContactFragment
+  }
+  countryCode
+  data
+}
+
+fragment EcommerceAddressFragment on EcommerceAddress {
+  contacts {
+    ...EcommerceContactFragment
+  }
+  countryCode
+  data
+  isDefault
+  isDefaultBilling
+  isDefaultShipping
+}
+
+fragment EcommerceContactFragment on EcommerceContact {
+  emails {
+    ...EmailFragment
+  }
+  isDefault
+  names
+  numbers {
+    ...ContactNumberFragment
+  }
+  surname
+  websites
+}

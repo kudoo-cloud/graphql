@@ -1,0 +1,111 @@
+#import "./commonFragments.gql"
+
+query timeSheetEntries(
+  $filters: TimeSheetEntryFilters = {}
+  $orders: [[String]]
+) {
+  timeSheetEntries(first: 10000, filters: $filters, orders: $orders) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...TimeSheetEntryFragment
+      }
+    }
+  }
+}
+
+query timeSheetEntry($id: String) {
+  node(id: $id) {
+    ... on TimeSheetEntry {
+      ...TimeSheetEntryFragment
+    }
+  }
+}
+
+# Create TimeSheetEntry
+mutation createTimeSheetEntry(
+  $customerId: ID
+  $date: NaiveDateTime
+  $duration: Decimal
+  $projectId: ID
+  $serviceId: ID
+  $timeSheetId: ID
+) {
+  createTimeSheetEntry(
+    customerId: $customerId
+    date: $date
+    duration: $duration
+    projectId: $projectId
+    serviceId: $serviceId
+    timeSheetId: $timeSheetId
+  ) {
+    successful
+    messages {
+      field
+      message
+    }
+    result {
+      ...TimeSheetEntryFragment
+    }
+  }
+}
+
+# Update TimeSheetEntry
+mutation updateTimeSheetEntry(
+  $customerId: ID
+  $date: NaiveDateTime
+  $duration: Decimal
+  $id: ID!
+  $isArchived: Boolean
+  $projectId: ID
+  $serviceId: ID
+  $timeSheetId: ID
+) {
+  updateTimeSheetEntry(
+    customerId: $customerId
+    date: $date
+    duration: $duration
+    id: $id
+    isArchived: $isArchived
+    projectId: $projectId
+    serviceId: $serviceId
+    timeSheetId: $timeSheetId
+  ) {
+    successful
+    messages {
+      field
+      message
+    }
+    result {
+      ...TimeSheetEntryFragment
+    }
+  }
+}
+
+# Delete TimeSheetEntry
+mutation deleteTimeSheetEntry($id: ID) {
+  deleteTimeSheetEntry(id: $id) {
+    successful
+    messages {
+      field
+      message
+    }
+    result {
+      ...TimeSheetEntryFragment
+    }
+  }
+}
+
+fragment TimeSheetEntryFragment on TimeSheetEntry {
+  id
+  customerId
+  date
+  duration
+  isArchived
+  projectId
+  serviceId
+  timeSheetId
+	isInvoiced
+}

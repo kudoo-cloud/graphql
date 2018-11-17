@@ -1,0 +1,173 @@
+#import "./company.gql"
+#import "./commonFragments.gql"
+
+# Register
+mutation register(
+  $email: String!
+  $firstName: String!
+  $lastName: String!
+  $password: String!
+  $passwordRepeat: String!
+) {
+  register(
+    email: $email
+    firstName: $firstName
+    lastName: $lastName
+    password: $password
+    passwordRepeat: $passwordRepeat
+  ) {
+    messages {
+      code
+      field
+      message
+    }
+    result {
+      ...UserFragment
+    }
+    successful
+  }
+}
+
+# Login
+mutation login($email: String!, $password: String!) {
+  login(email: $email, password: $password) {
+    messages {
+      code
+      field
+      message
+    }
+    result {
+      ...SessionFragment
+    }
+    successful
+  }
+}
+
+# Invite
+mutation invite($email: String!, $role: CompanyAccessLevel!) {
+  invite(email: $email, role: $role) {
+    successful
+  }
+}
+
+# remember
+mutation remember($email: String!) {
+  remember(email: $email) {
+    successful
+  }
+}
+
+# update current user
+mutation update(
+  $accessLevel: String
+  $activePlanId: ID
+  $email: String
+  $firstName: String
+  $isArchived: Boolean
+  $jobTitle: String
+  $lastName: String
+  $contactNumber: ContactNumberInput
+  $oldPassword: String
+  $secondAuthEnabled: Boolean
+  $password: String
+  $passwordRepeat: String
+) {
+  update(
+    accessLevel: $accessLevel
+    activePlanId: $activePlanId
+    email: $email
+    firstName: $firstName
+    isArchived: $isArchived
+    jobTitle: $jobTitle
+    lastName: $lastName
+    contactNumber: $contactNumber
+    secondAuthEnabled: $secondAuthEnabled
+    oldPassword: $oldPassword
+    password: $password
+    passwordRepeat: $passwordRepeat
+  ) {
+    messages {
+      code
+      field
+      message
+    }
+    result {
+      ...UserFragment
+    }
+    successful
+  }
+}
+
+query me {
+  me {
+    accessLevel
+    company {
+      ...CompanyFragment
+    }
+    companyMembers {
+      isArchived
+      role
+      status
+      user {
+        ...UserFragment
+      }
+    }
+    session {
+      ...SessionFragment
+    }
+    user {
+      ...UserFragment
+    }
+    userMembers {
+      company {
+        ...CompanyFragment
+      }
+      status
+      isArchived
+      role
+    }
+  }
+}
+
+query users($filters: UserFilters = {}, $orders: [[String]]) {
+  users(first: 1000, filters: $filters, orders: $orders) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...UserFragment
+      }
+    }
+  }
+}
+
+mutation logout {
+  logout {
+    successful
+  }
+}
+
+fragment UserFragment on User {
+  activePlanId
+  email
+  firstName
+  id
+  isArchived
+  isRoot
+  jobTitle
+  lastName
+  secondAuthEnabled
+  contactNumber {
+    countryCode
+    nationalNumber
+    type
+  }
+}
+
+fragment SessionFragment on Session {
+  expiresAt
+  signedAt
+  token
+  userId
+}

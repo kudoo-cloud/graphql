@@ -1,0 +1,40 @@
+#import "./commonFragments.gql"
+
+query trader($id: String) {
+  node(id: $id) {
+    ... on Trader {
+      ...TraderFragment
+    }
+  }
+}
+
+# Update Trader
+mutation updateTrader($data: TraderInput!, $id: ID!) {
+  updateTrader(data: $data, id: $id) {
+    successful
+    messages {
+      field
+      message
+    }
+    result {
+      ...TraderFragment
+    }
+  }
+}
+
+fragment TraderFragment on Trader {
+  id
+  addresses {
+    ...EcommerceAddressFragment
+  }
+  contacts {
+    ...EcommerceContactFragment
+  }
+  notes {
+    at
+    label
+    text
+    validFrom
+    validTo
+  }
+}

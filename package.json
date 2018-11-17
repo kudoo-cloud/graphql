@@ -1,0 +1,44 @@
+{
+  "name": "kudoo-graphql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel": "npm run babel:hoc && npm run babel:services && npm run babel:typedefs",
+    "babel:hoc": "babel hoc --out-dir ./build/hoc",
+    "babel:services": "babel services --out-dir ./build/services",
+    "babel:typedefs": "babel typedefs --out-dir ./build/typedefs",
+    "preinstall": "npm run babel"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-link": "^1.2.3",
+    "apollo-link-http": "^1.5.5",
+    "cross-fetch": "^2.2.2",
+    "es6-promise": "^4.2.5",
+    "exports-loader": "^0.7.0",
+    "graphql": "^0.13.2",
+    "graphql-tag": "^2.10.0",
+    "imports-loader": "^0.8.0",
+    "lodash": "^4.17.11",
+    "react": "16.5.2",
+    "react-apollo": "2.0.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-transform-async-to-generator": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-plugin-import-graphql": "^2.6.2",
+    "babel-plugin-module-resolver": "^3.1.1"
+  },
+  "peerDependencies": {
+    "react": "*"
+  }
+}

@@ -1,0 +1,28 @@
+# This returns all invoice total till now
+query dashboardInvoiceSumTotal {
+  dashboardInvoiceSumTotal
+}
+
+# This returns created invoices with total by months
+query dashboardCreatedInvoices {
+  dashboardCreatedInvoices{
+		count
+		month
+		total
+		year
+	}
+}
+
+# This returns created projects
+query dashboardCreatedProjects {
+	dashboardCreatedProjects{
+		count 
+		month
+		year
+	}
+}
+
+# This returns avg by invoices count
+query dashboardInvoiceAvgTotal{
+	dashboardInvoiceAvgTotal
+}

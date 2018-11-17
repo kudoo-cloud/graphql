@@ -1,0 +1,20 @@
+#import "./commonFragments.gql"
+
+query integrations($filters: IntegrationFilters = {}, $orders: [[String]]) {
+  integrations(first: 1000, filters: $filters, orders: $orders) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...IntegrationFragment
+      }
+    }
+  }
+}
+
+fragment IntegrationFragment on Integration {
+  company_id
+  id
+  type
+}

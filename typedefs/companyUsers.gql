@@ -1,0 +1,72 @@
+#import "./commonFragments.gql"
+
+query companiesMembers($filters: CompanyFilters = {}, $orders: [[String]]) {
+  companiesMembers(first: 1000, filters: $filters, orders: $orders) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...CompanyMemberFragment
+      }
+    }
+  }
+}
+
+# Create Company Member
+mutation createCompanyMember($companyId: ID!, $userId: ID!) {
+  createCompanyMember(companyId: $companyId, userId: $userId) {
+    result {
+      ...CompanyMemberFragment
+    }
+    messages {
+      code
+      message
+    }
+    successful
+  }
+}
+
+# delete Company Member
+mutation updateCompanyMember(
+  $companyId: ID!
+  $isArchived: Boolean
+  $userId: ID!
+) {
+  updateCompanyMember(
+    companyId: $companyId
+    isArchived: $isArchived
+    userId: $userId
+  ) {
+    result {
+      ...CompanyMemberFragment
+    }
+    messages {
+      code
+      message
+    }
+    successful
+  }
+}
+
+# delete Company Member
+mutation deleteCompanyMember($companyId: ID!, $userId: ID!) {
+  deleteCompanyMember(companyId: $companyId, userId: $userId) {
+    result {
+      ...CompanyMemberFragment
+    }
+    messages {
+      code
+      message
+    }
+    successful
+  }
+}
+
+fragment CompanyMemberFragment on CompanyMember {
+  companyId
+  isArchived
+  userId
+  role
+  status
+}

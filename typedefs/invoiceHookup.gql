@@ -1,0 +1,58 @@
+#import "./commonFragments.gql"
+
+query invoiceHookups($first: Int = 1000, $filters: InvoiceHookupFilters = {}, $orders: [[String]]) {
+  invoiceHookups(first: $first, filters: $filters, orders: $orders) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...InvoiceHookupFragment
+      }
+    }
+  }
+}
+
+query invoiceHookup($id: String) {
+  node(id: $id) {
+    ... on InvoiceHookup {
+      ...InvoiceHookupFragment
+    }
+  }
+}
+
+# Create Invoice Hookup
+mutation createInvoiceHookup(
+  $invoiceId: ID!
+	$itemOrder: Int!
+	$serviceId: ID
+	$projectId: ID
+	$timeSheetEntryId: ID
+	$type: InvoiceHookupType!
+) {
+  createInvoiceHookup(
+    invoiceId: $invoiceId
+		itemOrder: $itemOrder
+		serviceId: $serviceId
+		projectId: $projectId
+		timeSheetEntryId: $timeSheetEntryId
+		type: $type
+  ) {
+    successful
+    messages {
+      field
+      message
+    }
+    result {
+      ...InvoiceHookupFragment
+    }
+  }
+}
+
+fragment InvoiceHookupFragment on InvoiceHookup {
+	invoiceId
+	itemOrder
+	serviceId
+	timeSheetEntryId
+	type
+}

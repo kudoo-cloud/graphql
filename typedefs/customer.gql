@@ -1,0 +1,89 @@
+#import "./commonFragments.gql"
+
+query customers(
+  $first: Int = 1000
+  $filters: CustomerFilters = {}
+  $orders: [[String]]
+) {
+  customers(first: $first, filters: $filters, orders: $orders) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...CustomerFragment
+      }
+    }
+  }
+}
+
+query customer($id: String) {
+  node(id: $id) {
+    ... on Customer {
+      ...CustomerFragment
+    }
+  }
+}
+
+# Create Customer
+mutation createCustomer($govNumber: String, $name: String, $companyId: ID) {
+  createCustomer(govNumber: $govNumber, name: $name, companyId: $companyId) {
+    successful
+    messages {
+      field
+      message
+    }
+    result {
+      ...CustomerFragment
+    }
+  }
+}
+
+# Update Customer
+mutation updateCustomer(
+  $govNumber: String
+  $companyId: ID
+  $id: ID!
+  $isArchived: Boolean
+  $name: String
+) {
+  updateCustomer(
+    govNumber: $govNumber
+    companyId: $companyId
+    id: $id
+    isArchived: $isArchived
+    name: $name
+  ) {
+    successful
+    messages {
+      field
+      message
+    }
+    result {
+      ...CustomerFragment
+    }
+  }
+}
+
+# Delete Customer
+mutation deleteCustomer($id: ID!) {
+  deleteCustomer(id: $id) {
+    successful
+    messages {
+      field
+      message
+    }
+    result {
+      ...CustomerFragment
+    }
+  }
+}
+
+fragment CustomerFragment on Customer {
+  id
+  name
+  govNumber
+  companyId
+  isArchived
+  traderId
+}

@@ -1,0 +1,92 @@
+#import "./commonFragments.gql"
+
+query projectsServices(
+  $filters: ProjectServiceFilters = {}
+  $orders: [[String]]
+) {
+  projectsServices(first: 1000, filters: $filters, orders: $orders) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...ProjectServiceFragment
+      }
+    }
+  }
+}
+
+query projectService($id: String) {
+  node(id: $id) {
+    ... on ProjectService {
+      ...ProjectServiceFragment
+    }
+  }
+}
+
+# Create Project Service
+mutation createProjectService(
+  $amount: MoneyInput
+  $projectId: ID!
+  $rules: ProjectServiceRuleInput = []
+  $serviceId: ID!
+) {
+  createProjectService(
+    amount: $amount
+    projectId: $projectId
+    rules: $rules
+    serviceId: $serviceId
+  ) {
+    successful
+    messages {
+      field
+      message
+    }
+    result {
+      ...ProjectServiceFragment
+    }
+  }
+}
+
+# Update Project Service
+mutation updateProjectService(
+	$amount: MoneyInput
+	$isArchived: Boolean
+	$projectId: ID!
+	$rules: [ProjectServiceRuleInput]
+	$serviceId: ID!
+) {
+  updateProjectService(
+    amount: $amount
+		isArchived: $isArchived
+    projectId: $projectId
+    rules: $rules
+    serviceId: $serviceId
+  ) {
+    successful
+    messages {
+      field
+      message
+    }
+    result {
+      ...ProjectServiceFragment
+    }
+  }
+}
+
+fragment ProjectServiceFragment on ProjectService {
+  amount {
+    value
+    currency
+  }
+  rules {
+    amount {
+      currency
+      value
+    }
+    type
+  }
+  isArchived
+  projectId
+  serviceId
+}
