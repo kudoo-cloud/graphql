@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "baseUrl": ".",
+    "paths": {
+      "typedefs/*": ["./src/typedefs/"],
+      "services/*": ["./src/services/"],
+      "hoc/*": ["./src/hoc/"],
+      "helpers/*": ["./src/helpers/"]
+    }
+  },
+  "exclude": ["node_modules"],
+  "path-intellisense.autoSlashAfterDirectory": true
+}

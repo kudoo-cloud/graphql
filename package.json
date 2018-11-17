@@ -1,15 +1,13 @@
 {
-  "name": "kudoo-graphql",
+  "name": "@kudoo/graphql",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "babel": "npm run babel:hoc && npm run babel:services && npm run babel:typedefs",
-    "babel:hoc": "babel hoc --out-dir ./build/hoc",
-    "babel:services": "babel services --out-dir ./build/services",
-    "babel:typedefs": "babel typedefs --out-dir ./build/typedefs",
-    "preinstall": "npm run babel"
+    "copy-typedefs": "ncp ./src/typedefs ./build/typedefs",
+    "build": "babel src --out-dir ./build && npm run copy-typedefs",
+    "postinstall": "npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +21,7 @@
     "graphql-tag": "^2.10.0",
     "imports-loader": "^0.8.0",
     "lodash": "^4.17.11",
+    "ncp": "^2.0.0",
     "react": "16.5.2",
     "react-apollo": "2.0.4"
   },

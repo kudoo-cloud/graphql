@@ -1,0 +1,25 @@
+const plugins = [
+  "@babel/plugin-transform-async-to-generator",
+  "@babel/plugin-proposal-class-properties",
+  "import-graphql",
+  [
+    "module-resolver",
+    {
+      root: ["."],
+      alias: {
+        "typedefs/*": "./src/typedefs/",
+        "services/*": "./src/services/",
+				"hoc/*": "./src/hoc/",
+				"helpers/*": "./src/helpers/"
+      }
+    }
+  ]
+];
+
+const presets = [
+  "@babel/preset-env",
+  "@babel/preset-react",
+  "@babel/preset-flow"
+];
+
+module.exports = { plugins, presets };
