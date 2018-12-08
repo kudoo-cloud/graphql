@@ -71,3 +71,16 @@ fragment EcommerceContactFragment on EcommerceContact {
   surname
   websites
 }
+
+fragment PlanFragment on Plan {
+  id
+  company {
+    id
+  }
+  is_active
+  is_archived
+  is_deleted
+  max_users
+  name
+  price
+}

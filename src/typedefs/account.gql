@@ -16,30 +16,26 @@ mutation register(
     password: $password
     passwordRepeat: $passwordRepeat
   ) {
-    messages {
-      code
-      field
-      message
-    }
-    result {
-      ...UserFragment
-    }
-    successful
+    success
   }
 }
 
 # Login
 mutation login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
-    messages {
-      code
-      field
-      message
+    id
+    active_plan {
+      ...PlanFragment
     }
-    result {
-      ...SessionFragment
-    }
-    successful
+    contact_number
+    email
+    first_name
+    is_active
+    is_archived
+    job_title
+    last_name
+    second_auth_enabled
+    token
   }
 }
 
@@ -53,7 +49,14 @@ mutation invite($email: String!, $role: CompanyAccessLevel!) {
 # remember
 mutation remember($email: String!) {
   remember(email: $email) {
-    successful
+    success
+  }
+}
+
+# Reset Password
+mutation resetPassword($password: String!, $passwordRepeat: String!) {
+  resetPassword(password: $password, passwordRepeat: $passwordRepeat) {
+    success
   }
 }
 

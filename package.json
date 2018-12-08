@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "copy-typedefs": "ncp ./src/typedefs ./build/typedefs",
     "build": "babel src --out-dir ./build && npm run copy-typedefs",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "watch": "watch \"npm run build\" ./src"
   },
   "author": "Kudoo Cloud Pty Ltd",
   "license": "MIT",
@@ -23,7 +24,8 @@
     "lodash": "^4.17.11",
     "ncp": "^2.0.0",
     "react": "16.5.2",
-    "react-apollo": "2.0.4"
+    "react-apollo": "2.0.4",
+    "watch": "^1.0.2"
   },
   "devDependencies": {
     "@babel/node": "^7.0.0",
