@@ -24,17 +24,17 @@ mutation register(
 mutation login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
     id
-    active_plan {
+    activePlan {
       ...PlanFragment
     }
-    contact_number
+    contactNumber
     email
-    first_name
-    is_active
-    is_archived
-    job_title
-    last_name
-    second_auth_enabled
+    firstName
+    isActive
+    isArchived
+    jobTitle
+    lastName
+    secondAuthEnabled
     token
   }
 }
@@ -149,28 +149,4 @@ mutation logout {
   logout {
     successful
   }
-}
-
-fragment UserFragment on User {
-  activePlanId
-  email
-  firstName
-  id
-  isArchived
-  isRoot
-  jobTitle
-  lastName
-  secondAuthEnabled
-  contactNumber {
-    countryCode
-    nationalNumber
-    type
-  }
-}
-
-fragment SessionFragment on Session {
-  expiresAt
-  signedAt
-  token
-  userId
 }

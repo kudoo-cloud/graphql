@@ -15,11 +15,16 @@ export default (config: any = () => {}) => (WrappedComponent: any) => {
   let withUpdateCompany = (props: any) => {
     const updateCompany = async ({ id, ...rest }) => {
       const res = await props.updateCompany({
-        id,
-        ...rest
+        where: {
+          id
+        },
+        data: rest
       });
 
-      let parsedRes = graphqlResponse.handleMutationResponse(res, "updateCompany");
+      let parsedRes = graphqlResponse.handleMutationResponse(
+        res,
+        "updateCompany"
+      );
       if (parsedRes.success) {
         return { error: null, success: true, result: parsedRes.result };
       }

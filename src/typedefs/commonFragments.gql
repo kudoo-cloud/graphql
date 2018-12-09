@@ -28,25 +28,25 @@ fragment ContactNumberFragment on ContactNumber {
   type
 }
 
-fragment ContactFragment on Contact {
-  emails {
-    ...EmailFragment
-  }
-  names
-  numbers {
-    ...ContactNumberFragment
-  }
-  surname
-  websites
-}
+# fragment ContactFragment on Contact {
+#   emails {
+#     ...EmailFragment
+#   }
+#   names
+#   numbers {
+#     ...ContactNumberFragment
+#   }
+#   surname
+#   websites
+# }
 
-fragment AddressFragment on Address {
-  contact {
-    ...ContactFragment
-  }
-  countryCode
-  data
-}
+# fragment AddressFragment on Address {
+#   contact {
+#     ...ContactFragment
+#   }
+#   countryCode
+#   data
+# }
 
 fragment EcommerceAddressFragment on EcommerceAddress {
   contacts {
@@ -72,6 +72,41 @@ fragment EcommerceContactFragment on EcommerceContact {
   websites
 }
 
+fragment UserFragment on User {
+  id
+  activePlan {
+    ...PlanFragment
+  }
+  contactNumber
+  email
+  firstName
+  isActive
+  isArchived
+  isDeleted
+  isRoot
+  jobTitle
+  lastName
+  password
+  secondAuthEnabled
+}
+
+fragment SessionFragment on Session {
+  expiresAt
+  signedAt
+  token
+  userId
+}
+
+fragment AttachmentFragment on Attachment {
+  id
+  description
+  fileName
+  label
+  url
+  s3Bucket
+  s3Key
+}
+
 fragment PlanFragment on Plan {
   id
   company {
@@ -83,4 +118,83 @@ fragment PlanFragment on Plan {
   max_users
   name
   price
+}
+
+fragment AddressFragment on Address {
+  id
+  street
+  city
+  state
+  country
+  postCode
+  latitude
+  longitude
+}
+
+fragment ContactFragment on Contact {
+  id
+  name
+  surname
+  email
+  mobileCode
+  mobileNumber
+  landlineCode
+  landlineNumber
+}
+
+fragment CompanyShortFragment on Company {
+  id
+  name
+}
+
+fragment CompanyMemberFragment on CompanyMember {
+  id
+  company {
+    ...CompanyShortFragment
+  }
+  isArchived
+  isDeleted
+  role
+  status
+  user {
+    ...UserFragment
+  }
+}
+
+fragment CompanyFragment on Company {
+  id
+  bankAccount 
+	# {
+  #   name
+  #   code
+  #   accountNumber
+  #   description
+  # }
+  businessType
+  country
+  govNumber
+  isArchived
+  legalName
+  logo {
+    ...AttachmentFragment
+  }
+  name
+  salesTax
+  timeSheetSettings
+	# {
+  #   autoSendInvoices
+  #   groupEvery
+  #   workingHours
+  #   approvalsEnabled
+  # }
+  websiteURL
+  addresses {
+    ...AddressFragment
+  }
+  contacts {
+    ...ContactFragment
+  }
+  companyMembers {
+    ...CompanyMemberFragment
+  }
 }

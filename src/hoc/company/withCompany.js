@@ -1,42 +1,44 @@
 /* @flow */
-import React from 'react';
-import PropTypes from 'prop-types';
-import get from 'lodash/get';
-import { graphql, compose } from 'react-apollo';
-import * as companyQuery from 'typedefs/company.gql';
+import React from "react";
+import PropTypes from "prop-types";
+import get from "lodash/get";
+import { graphql, compose } from "react-apollo";
+import * as companyQuery from "typedefs/company.gql";
 
 export default (config: any = () => {}) => (WrappedComponent: any) => {
   let withCompany = (props: any) => {
-    return <WrappedComponent {...props} company={get(props, 'company', {})} />;
+    return <WrappedComponent {...props} company={get(props, "company", {})} />;
   };
 
   withCompany.propTypes = {
     company: PropTypes.shape({
       data: PropTypes.object,
       loading: PropTypes.bool,
-      refetch: PropTypes.func,
-    }),
+      refetch: PropTypes.func
+    })
   };
 
   return compose(
     graphql(companyQuery.company, {
       options: props => {
         const params = config(props);
-        const id = get(params, 'id', '');
+        const id = get(params, "id", "");
         return {
-          skip: id === '',
+          skip: id === "",
           variables: {
-            id,
-          },
+            where: {
+              id
+            }
+          }
         };
       },
       props: ({ data }) => ({
         company: {
-          data: get(data, 'node', {}),
+          data: get(data, "company", {}),
           loading: data.loading,
-          refetch: data.refetch,
-        },
-      }),
+          refetch: data.refetch
+        }
+      })
     })
   )(withCompany);
 };

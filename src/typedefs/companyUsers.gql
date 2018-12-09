@@ -62,11 +62,3 @@ mutation deleteCompanyMember($companyId: ID!, $userId: ID!) {
     successful
   }
 }
-
-fragment CompanyMemberFragment on CompanyMember {
-  companyId
-  isArchived
-  userId
-  role
-  status
-}
