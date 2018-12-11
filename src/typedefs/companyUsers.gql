@@ -50,15 +50,8 @@ mutation updateCompanyMember(
 }
 
 # delete Company Member
-mutation deleteCompanyMember($companyId: ID!, $userId: ID!) {
-  deleteCompanyMember(companyId: $companyId, userId: $userId) {
-    result {
-      ...CompanyMemberFragment
-    }
-    messages {
-      code
-      message
-    }
-    successful
+mutation deleteCompanyMember($id: ID!) {
+  deleteCompanyMember(id: $id) {
+    success
   }
 }

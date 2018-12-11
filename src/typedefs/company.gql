@@ -25,3 +25,10 @@ mutation updateCompany($data: kCompanyUpdateInput!, $where: WhereUniqueInput!) {
     ...CompanyFragment
   }
 }
+
+# Invite
+mutation invite($email: String!, $role: CompanyMemberRole!) {
+  invite(email: $email, role: $role) {
+    success
+  }
+}

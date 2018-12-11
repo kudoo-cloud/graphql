@@ -39,13 +39,6 @@ mutation login($email: String!, $password: String!) {
   }
 }
 
-# Invite
-mutation invite($email: String!, $role: CompanyAccessLevel!) {
-  invite(email: $email, role: $role) {
-    successful
-  }
-}
-
 # remember
 mutation remember($email: String!) {
   remember(email: $email) {
@@ -61,43 +54,39 @@ mutation resetPassword($password: String!, $passwordRepeat: String!) {
 }
 
 # update current user
-mutation update(
-  $accessLevel: String
-  $activePlanId: ID
-  $email: String
+mutation updateUser(
   $firstName: String
-  $isArchived: Boolean
-  $jobTitle: String
   $lastName: String
-  $contactNumber: ContactNumberInput
-  $oldPassword: String
+  $jobTitle: String
+  $contactNumber: Json
   $secondAuthEnabled: Boolean
+  $oldPassword: String
   $password: String
   $passwordRepeat: String
 ) {
-  update(
-    accessLevel: $accessLevel
-    activePlanId: $activePlanId
-    email: $email
+  updateUser(
     firstName: $firstName
-    isArchived: $isArchived
-    jobTitle: $jobTitle
     lastName: $lastName
+    jobTitle: $jobTitle
     contactNumber: $contactNumber
     secondAuthEnabled: $secondAuthEnabled
     oldPassword: $oldPassword
     password: $password
     passwordRepeat: $passwordRepeat
   ) {
-    messages {
-      code
-      field
-      message
+    id
+    activePlan {
+      ...PlanFragment
     }
-    result {
-      ...UserFragment
-    }
-    successful
+    contactNumber
+    email
+    firstName
+    isActive
+    isArchived
+    jobTitle
+    lastName
+    secondAuthEnabled
+    token
   }
 }
 
