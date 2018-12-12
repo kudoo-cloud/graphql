@@ -163,8 +163,8 @@ fragment CompanyMemberFragment on CompanyMember {
 
 fragment CompanyFragment on Company {
   id
-  bankAccount 
-	# {
+  bankAccount
+  # {
   #   name
   #   code
   #   accountNumber
@@ -181,7 +181,7 @@ fragment CompanyFragment on Company {
   name
   salesTax
   timeSheetSettings
-	# {
+  # {
   #   autoSendInvoices
   #   groupEvery
   #   workingHours
@@ -197,4 +197,19 @@ fragment CompanyFragment on Company {
   companyMembers {
     ...CompanyMemberFragment
   }
+}
+
+fragment ServiceFragment on Service {
+  id
+  billingType
+  company {
+    ...CompanyShortFragment
+  }
+  includeConsTax
+  isArchived
+  isDeleted
+  isTemplate
+  name
+  timeBasedType
+  totalAmount
 }
