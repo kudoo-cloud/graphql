@@ -1,4 +1,4 @@
-import graphqlRequest from "./index";
+import graphqlRequest from "./Request";
 import * as AccountQuery from "typedefs/account.gql";
 
 class Account {

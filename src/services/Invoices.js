@@ -1,4 +1,4 @@
-import graphqlRequest from ".";
+import graphqlRequest from "./Request";
 import * as InvoiceQuery from "typedefs/invoice.gql";
 
 class Invoices {

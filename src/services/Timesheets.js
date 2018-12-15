@@ -1,4 +1,4 @@
-import graphqlRequest from "./index";
+import graphqlRequest from "./Request";
 import * as TimesheetQuery from "typedefs/timesheet.gql";
 
 class Timesheets {

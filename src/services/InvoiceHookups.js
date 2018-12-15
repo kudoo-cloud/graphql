@@ -1,4 +1,4 @@
-import graphqlRequest from "./index";
+import graphqlRequest from "./Request";
 import * as InvoiceHookupQuery from "typedefs/invoiceHookup.gql";
 
 class InvoiceHookups {

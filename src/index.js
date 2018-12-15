@@ -1,15 +1,18 @@
-import GraphQLRequest from "./services";
-import AccountService from "./services/Account";
-import InvoiceHookupsService from "./services/InvoiceHookups";
-import InvoicesService from "./services/Invoices";
-import TimesheetEntriesService from "./services/TimesheetEntries";
-import TimesheetsService from "./services/Timesheets";
-
+// gql services
 export {
-  GraphQLRequest,
+  default as GraphQLRequest,
   AccountService,
   InvoiceHookupsService,
   InvoicesService,
   TimesheetEntriesService,
   TimesheetsService
-};
+} from "./services";
+
+// hocs
+export {
+  withService,
+  withServices,
+  withCreateService,
+  withUpdateService,
+  withDeleteService
+} from "./hoc/service";
