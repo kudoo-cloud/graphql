@@ -213,3 +213,21 @@ fragment ServiceFragment on Service {
   timeBasedType
   totalAmount
 }
+
+fragment CustomerFragment on Customer {
+  id
+  company {
+    ...CompanyShortFragment
+  }
+  description
+  govNumber
+  isArchived
+  isDeleted
+  name
+  addresses {
+    ...AddressFragment
+  }
+  contacts {
+    ...ContactFragment
+  }
+}
