@@ -24,3 +24,11 @@ export {
   withUpdateCustomer,
   withDeleteCustomer
 } from "./hoc/customer";
+
+export {
+  withProject,
+  withProjects,
+  withCreateProject,
+  withUpdateProject,
+  withDeleteProject
+} from "./hoc/project";

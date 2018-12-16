@@ -231,3 +231,49 @@ fragment CustomerFragment on Customer {
     ...ContactFragment
   }
 }
+
+fragment ProjectServiceRuleFragment on ProjectServiceRule {
+  id
+  projectService {
+    id
+  }
+  amount
+  type
+  isPercent
+}
+
+fragment ProjectServiceFragment on ProjectService {
+  id
+  amount
+  isArchived
+  isDeleted
+  project {
+    id
+  }
+  rules {
+    ...ProjectServiceRuleFragment
+  }
+  service {
+    ...ServiceFragment
+  }
+}
+
+fragment ProjectFragment on Project {
+  id
+  company {
+    ...CompanyShortFragment
+  }
+  customer {
+    ...CustomerFragment
+  }
+  description
+  endsAt
+  isArchived
+  isDeleted
+  name
+  projectService {
+    ...ProjectServiceFragment
+  }
+  startsAt
+  status
+}
