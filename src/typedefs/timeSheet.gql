@@ -65,9 +65,9 @@ mutation deleteTimeSheet($where: WhereUniqueInput!) {
 # Notify TimeSheet
 mutation timeSheetNotify(
   $timeSheetId: ID
-  $to: [EmailShort]
-  $cc: [EmailShort]
-  $bcc: [EmailShort]
+  $to: [String!]!
+  $cc: [String!]!
+  $bcc: [String!]!
 ) {
   timeSheetNotify(timeSheetId: $timeSheetId, to: $to, cc: $cc, bcc: $bcc) {
     success
@@ -75,7 +75,7 @@ mutation timeSheetNotify(
 }
 
 # Approve TimeSheet
-mutation timeSheetApprove($timeSheetId: ID!, $to: [EmailShort]) {
+mutation timeSheetApprove($timeSheetId: ID!, $to: [String!]!) {
   timeSheetApprove(timeSheetId: $timeSheetId, to: $to) {
     success
   }

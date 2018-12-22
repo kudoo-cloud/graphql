@@ -38,5 +38,9 @@ export {
   withTimeSheets,
   withCreateTimeSheet,
   withUpdateTimeSheet,
-  withDeleteTimeSheet
+  withDeleteTimeSheet,
+  withTimeSheetApprove,
+  withTimeSheetNotify
 } from "./hoc/timeSheet";
+
+export { withDeleteAttachment } from "./hoc/attachment";
