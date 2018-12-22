@@ -1,14 +1,16 @@
 /* @flow */
 import React from "react";
 import get from "lodash/get";
-import { graphql } from "react-apollo";
+import { graphql, withApollo } from "react-apollo";
+import { compose, withProps } from "recompose";
 
 type Param = {
   config: Function,
   responseFun?: Function,
   queryName: String,
   query: any,
-  defaultPropName: string
+  defaultPropName: string,
+  functionName?: string // this is useful when we want to execute query and get result in the same context instead of in props
 };
 
 export default ({
@@ -16,7 +18,8 @@ export default ({
   responseFun,
   queryName,
   query,
-  defaultPropName = "data"
+  defaultPropName = "data",
+  functionName
 }: Param) => {
   let getPropName = (props: any) => {
     let params = config(props);
@@ -51,48 +54,65 @@ export default ({
     };
   };
 
-  return graphql(query, {
-    options: props => {
-      const params = config(props);
-      return {
-        variables: get(params, "variables"),
-        skip: get(params, "skip", false) === true,
-        notifyOnNetworkStatusChange: true
-      };
-    },
-    props: ({ data, ownProps }) => {
-      let resultProps = {};
-      if (responseFun) {
-        // custom response
-        resultProps = responseFun({ data, ownProps });
-      } else {
-        // default response
-        const propName = getPropName(ownProps);
-        const pageInfo = get(data, `${queryName}.pageInfo`, {});
-        const resultData = handleResult({ data, ownProps });
-        resultProps = {
-          [propName]: {
-            loading: data.loading,
-            refetch: data.refetch,
-            error: data.error,
-            ...resultData,
-            loadNextPage: options => {
-              if (!pageInfo.hasNextPage) {
-                console.log("no next pages");
-                return;
+  return compose(
+    withApollo,
+    graphql(query, {
+      options: props => {
+        const params = config(props);
+        return {
+          variables: get(params, "variables"),
+          skip: get(params, "skip", false) === true,
+          notifyOnNetworkStatusChange: true
+        };
+      },
+      props: ({ data, ownProps }) => {
+        let resultProps = {};
+        if (responseFun) {
+          // custom response
+          resultProps = responseFun({ data, ownProps });
+        } else {
+          // default response
+          const propName = getPropName(ownProps);
+          const pageInfo = get(data, `${queryName}.pageInfo`, {});
+          const resultData = handleResult({ data, ownProps });
+          resultProps = {
+            [propName]: {
+              loading: data.loading,
+              refetch: data.refetch,
+              error: data.error,
+              ...resultData,
+              loadNextPage: options => {
+                if (!pageInfo.hasNextPage) {
+                  console.log("no next pages");
+                  return;
+                }
+                data.fetchMore({
+                  variables: {
+                    ...options,
+                    after: pageInfo.endCursor
+                  },
+                  updateQuery: handlePaginationResponse
+                });
               }
-              data.fetchMore({
-                variables: {
-                  ...options,
-                  after: pageInfo.endCursor
-                },
-                updateQuery: handlePaginationResponse
-              });
             }
+          };
+        }
+        return resultProps;
+      }
+    }),
+    withProps(props => {
+      if (functionName) {
+        const prop = {
+          [functionName]: async options => {
+            return await props.client.query({
+              query,
+              variables: options.variables
+            });
           }
         };
+        return prop;
       }
-      return resultProps;
-    }
-  });
+      return props;
+    })
+  );
 };

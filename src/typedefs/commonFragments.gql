@@ -97,6 +97,8 @@ fragment SessionFragment on Session {
   userId
 }
 
+###############
+
 fragment AttachmentFragment on Attachment {
   id
   description
@@ -276,4 +278,50 @@ fragment ProjectFragment on Project {
   }
   startsAt
   status
+}
+
+fragment TimeSheetEntryFragment on TimeSheetEntry {
+  id
+  date
+  duration
+  isArchived
+  isDeleted
+  isInvoiced
+  timeSheet {
+    id
+  }
+  customer {
+    ...CustomerFragment
+  }
+  project {
+    ...ProjectFragment
+  }
+  service {
+    ...ServiceFragment
+  }
+}
+
+fragment TimeSheetFragment on TimeSheet {
+  id
+  attachments {
+    ...AttachmentFragment
+  }
+  company {
+    ...CompanyShortFragment
+  }
+  endsAt
+  isArchived
+  isDeleted
+  number
+  preview {
+    ...AttachmentFragment
+  }
+  startsAt
+  status
+  timeSheetEntries {
+    ...TimeSheetEntryFragment
+  }
+  user {
+    ...UserFragment
+  }
 }

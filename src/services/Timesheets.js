@@ -1,5 +1,5 @@
 import graphqlRequest from "./Request";
-import * as TimesheetQuery from "typedefs/timesheet.gql";
+import * as TimesheetQuery from "typedefs/timeSheet.gql";
 
 class Timesheets {
   static async getAll({ filters, orders } = {}) {

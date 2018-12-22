@@ -1,7 +1,3 @@
-/* @flow */
-import React from "react";
-import get from "lodash/get";
-import { graphql, compose } from "react-apollo";
 import * as customerQuery from "typedefs/customer.gql";
 import withPaginationQuery from "../withPaginationQuery";
 

@@ -32,3 +32,11 @@ export {
   withUpdateProject,
   withDeleteProject
 } from "./hoc/project";
+
+export {
+  withTimeSheet,
+  withTimeSheets,
+  withCreateTimeSheet,
+  withUpdateTimeSheet,
+  withDeleteTimeSheet
+} from "./hoc/timeSheet";
