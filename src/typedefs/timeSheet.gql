@@ -64,7 +64,7 @@ mutation deleteTimeSheet($where: WhereUniqueInput!) {
 
 # Notify TimeSheet
 mutation timeSheetNotify(
-  $timeSheetId: ID
+  $timeSheetId: ID!
   $to: [String!]!
   $cc: [String!]!
   $bcc: [String!]!

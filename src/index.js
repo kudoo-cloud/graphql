@@ -9,6 +9,8 @@ export {
 } from "./services";
 
 // hocs
+export { withCompany, withCompanies, withUpdateCompany } from "./hoc/company";
+
 export {
   withService,
   withServices,
