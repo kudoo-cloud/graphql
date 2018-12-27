@@ -9,7 +9,13 @@ export {
 } from "./services";
 
 // hocs
-export { withCompany, withCompanies, withUpdateCompany } from "./hoc/company";
+export {
+  withCompany,
+  withCompanies,
+  withUpdateCompany,
+  withDeleteCompanyMember,
+  withUpdateCompanyMember
+} from "./hoc/company";
 
 export {
   withService,
