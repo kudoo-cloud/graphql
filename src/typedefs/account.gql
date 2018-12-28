@@ -104,9 +104,6 @@ query me {
         ...UserFragment
       }
     }
-    session {
-      ...SessionFragment
-    }
     user {
       ...UserFragment
     }

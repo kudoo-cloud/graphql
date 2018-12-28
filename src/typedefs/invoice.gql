@@ -1,7 +1,23 @@
 #import "./commonFragments.gql"
 
-query invoices($first: Int = 1000, $filters: InvoiceFilters, $orders: [[String]], $customerId: ID) {
-  invoices(first: $first, filters: $filters, customerId: $customerId, orders: $orders) {
+query invoices(
+  $where: InvoiceWhereInput
+  $orderBy: InvoiceOrderByInput
+  $skip: Int
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
+) {
+  invoices(
+    where: $where
+    orderBy: $orderBy
+    skip: $skip
+    after: $after
+    before: $before
+    first: $first
+    last: $last
+  ) {
     pageInfo {
       ...PageInfoFragment
     }
@@ -10,14 +26,15 @@ query invoices($first: Int = 1000, $filters: InvoiceFilters, $orders: [[String]]
         ...InvoiceFragment
       }
     }
+    aggregate {
+      count
+    }
   }
 }
 
-query invoice($id: String) {
-  node(id: $id) {
-    ... on Invoice {
-      ...InvoiceFragment
-    }
+query invoice($where: WhereUniqueInput!) {
+  invoice(where: $where) {
+    ...InvoiceFragment
   }
 }
 
@@ -25,142 +42,21 @@ query countInvoices($filters: InvoiceFilters = {}) {
   countInvoices(filters: $filters)
 }
 
-mutation createInvoice($data: InvoiceInput!) {
+mutation createInvoice($data: kInvoiceCreateInput!) {
   createInvoice(data: $data) {
-    result {
-      ...InvoiceFragment
-    }
-    successful
-    messages {
-      code
-      field
-      message
-    }
+    ...InvoiceFragment
   }
 }
 
-mutation updateInvoice($data: InvoiceInput, $id: ID!) {
-  updateInvoice(data: $data, id: $id) {
-    result {
-      ...InvoiceFragment
-    }
-    successful
-    messages {
-      code
-      field
-      message
-    }
+mutation updateInvoiceStatus($status: InvoiceStatus!, $id: ID!) {
+  updateInvoiceStatus(status: $status, id: $id) {
+    ...InvoiceFragment
   }
 }
 
 # Notify Invoice
-mutation invoiceNotify(
-	$bcc: [EmailShort]
-	$cc: [EmailShort]
-	$invoiceId: ID!
-	$to: [EmailShort]
-	$opts: String
-) {
-  invoiceNotify(
-		bcc: $bcc
-		cc: $cc
-		invoiceId: $invoiceId
-		to: $to
-		opts: $opts
-	) {
-    successful
+mutation invoiceNotify($data: InvoiceNotifyInput) {
+  invoiceNotify(data: $data) {
+    success
   }
-}
-
-fragment InvoiceFragment on Invoice {
-  buyer {
-    ...BuyerFragment
-  }
-	attachments {
-		id
-		url
-		fileName
-	}
-	pdf {
-		id
-		url
-		fileName
-	}
-  customNumber
-  description
-  dueDate
-  expectedPaymentDate
-  footer
-  id
-  issueDate
-  items {
-    ...ItemFragment
-  }
-  number {
-    value
-  }
-  seller {
-    ...SellerFragment
-  }
-  title
-  total
-  buyerTraderId
-  sellerTraderId
-  status
-  type
-}
-
-fragment BuyerFragment on Buyer {
-  billingAddress {
-    ...AddressFragment
-  }
-  contact {
-    ...ContactFragment
-  }
-  copyBillingAddress
-  customer
-  notes
-  notificationEmails {
-    ...EmailFragment
-  }
-  shippingAddress {
-    ...AddressFragment
-  }
-}
-
-fragment SellerFragment on Seller {
-  address {
-    ...AddressFragment
-  }
-  contact {
-    ...ContactFragment
-  }
-  logoUrl
-  notificationEmails {
-    ...EmailFragment
-  }
-  vendor
-}
-
-fragment ItemFragment on Item {
-  description
-  discount {
-    ...DiscountFragment
-  }
-  name
-  order
-  price
-  quantity
-  tax {
-    ...TaxFragment
-  }
-}
-
-fragment TaxFragment on Tax {
-  description
-  isCompound
-  isRecoverable
-  name
-  order
-  rate
 }

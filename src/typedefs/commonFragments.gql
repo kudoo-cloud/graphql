@@ -5,73 +5,6 @@ fragment PageInfoFragment on PageInfo {
   hasPreviousPage
 }
 
-fragment MoneyFragment on Money {
-  currency
-  isPercent
-  value
-}
-
-fragment DiscountFragment on Discount {
-  label
-  order
-  value
-}
-
-fragment EmailFragment on Email {
-  name
-  value
-}
-
-fragment ContactNumberFragment on ContactNumber {
-  countryCode
-  nationalNumber
-  type
-}
-
-# fragment ContactFragment on Contact {
-#   emails {
-#     ...EmailFragment
-#   }
-#   names
-#   numbers {
-#     ...ContactNumberFragment
-#   }
-#   surname
-#   websites
-# }
-
-# fragment AddressFragment on Address {
-#   contact {
-#     ...ContactFragment
-#   }
-#   countryCode
-#   data
-# }
-
-fragment EcommerceAddressFragment on EcommerceAddress {
-  contacts {
-    ...EcommerceContactFragment
-  }
-  countryCode
-  data
-  isDefault
-  isDefaultBilling
-  isDefaultShipping
-}
-
-fragment EcommerceContactFragment on EcommerceContact {
-  emails {
-    ...EmailFragment
-  }
-  isDefault
-  names
-  numbers {
-    ...ContactNumberFragment
-  }
-  surname
-  websites
-}
-
 fragment UserFragment on User {
   id
   activePlan {
@@ -89,15 +22,6 @@ fragment UserFragment on User {
   password
   secondAuthEnabled
 }
-
-fragment SessionFragment on Session {
-  expiresAt
-  signedAt
-  token
-  userId
-}
-
-###############
 
 fragment AttachmentFragment on Attachment {
   id
@@ -324,4 +248,56 @@ fragment TimeSheetFragment on TimeSheet {
   user {
     ...UserFragment
   }
+}
+
+fragment InvoiceItemEntryFragment on InvoiceItemEntry {
+  id
+  order
+  description
+  name
+  price
+  quantity
+  tax
+  invoice {
+    id
+  }
+  project {
+    ...ProjectFragment
+  }
+  service {
+    ...ServiceFragment
+  }
+  timeSheetEntry {
+    ...TimeSheetEntryFragment
+  }
+  timeSheet {
+    ...TimeSheetFragment
+  }
+}
+
+fragment InvoiceFragment on Invoice {
+  id
+  title
+  attachments {
+    ...AttachmentFragment
+  }
+  buyer {
+    ...CustomerFragment
+  }
+  number
+  description
+  invoiceDate
+  dueDate
+  preview {
+    ...AttachmentFragment
+  }
+  items {
+    ...InvoiceItemEntryFragment
+  }
+  seller {
+    ...CompanyFragment
+  }
+  status
+  type
+  total
 }

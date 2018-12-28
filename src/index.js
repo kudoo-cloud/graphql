@@ -52,3 +52,11 @@ export {
 } from "./hoc/timeSheet";
 
 export { withDeleteAttachment } from "./hoc/attachment";
+
+export {
+  withInvoice,
+  withInvoices,
+  withCreateInvoice,
+  withInvoiceNotify,
+  withUpdateInvoiceStatus
+} from "./hoc/invoice";
