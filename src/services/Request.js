@@ -14,10 +14,10 @@ class GraphQLRequest {
       const companyId = this.companyToken;
       let headers = {};
       if (token) {
-        headers.UserAuth = `Menshen ${token}`;
+        headers["x-user-auth"] = `${token}`;
       }
       if (companyId) {
-        headers.CompanyAuth = `Menshen ${companyId}`;
+        headers["x-company-auth"] = `${companyId}`;
       }
       operation.setContext({
         headers
@@ -48,15 +48,15 @@ class GraphQLRequest {
     return makePromise(execute(this.link, { query, variables }));
   }
 
-  async getNode(query, id) {
+  async getNode(name, query, id) {
     try {
-      const res = await this.call(query, { id });
+      const res = await this.call(query, { where: { id } });
       if (get(res, "errors")) {
         return {
           errors: get(res, "errors")
         };
       } else {
-        return get(res, "data.node");
+        return get(res, `data.${name}`);
       }
     } catch (error) {
       return {

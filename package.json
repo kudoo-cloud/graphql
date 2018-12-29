@@ -25,6 +25,7 @@
     "ncp": "^2.0.0",
     "react": "16.5.2",
     "react-apollo": "2.0.4",
+    "react-dom": "16.5.2",
     "recompose": "^0.30.0",
     "watch": "^1.0.2"
   },
