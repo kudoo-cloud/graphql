@@ -2,10 +2,9 @@ import graphqlRequest from "./Request";
 import * as TimesheetQuery from "typedefs/timeSheet.gql";
 
 class Timesheets {
-  static async getAll({ filters, orders } = {}) {
+  static async getAll({ where } = {}) {
     return graphqlRequest.getAll("timeSheets", TimesheetQuery.timeSheets, {
-      filters,
-      orders
+      where
     });
   }
 }
