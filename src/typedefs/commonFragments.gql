@@ -164,6 +164,7 @@ fragment ProjectServiceRuleFragment on ProjectServiceRule {
     id
   }
   amount
+  percent
   type
   isPercent
 }
