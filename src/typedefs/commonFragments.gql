@@ -243,7 +243,7 @@ fragment TimeSheetFragment on TimeSheet {
   }
   startsAt
   status
-  timeSheetEntries {
+  timeSheetEntries(where: $timeSheetEntryWhere, orderBy: date_ASC) {
     ...TimeSheetEntryFragment
   }
   user {
