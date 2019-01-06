@@ -30,9 +30,11 @@ export default ({
     const edges = get(data, `${queryName}.edges`, []);
     const nodes = edges.map(({ node }) => node);
     const pageInfo = get(data, `${queryName}.pageInfo`, {});
+    const count = get(data, `${queryName}.aggregate.count`, 0);
     return {
       data: nodes,
-      pageInfo
+      pageInfo,
+      count
     };
   };
 
