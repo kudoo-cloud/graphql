@@ -8,6 +8,7 @@ query invoices(
   $before: String
   $first: Int
   $last: Int
+  $timeSheetEntryWhere: TimeSheetEntryWhereInput = {}
 ) {
   invoices(
     where: $where
@@ -32,7 +33,10 @@ query invoices(
   }
 }
 
-query invoice($where: WhereUniqueInput!) {
+query invoice(
+  $where: WhereUniqueInput!
+  $timeSheetEntryWhere: TimeSheetEntryWhereInput = {}
+) {
   invoice(where: $where) {
     ...InvoiceFragment
   }
@@ -42,13 +46,20 @@ query countInvoices($filters: InvoiceFilters = {}) {
   countInvoices(filters: $filters)
 }
 
-mutation createInvoice($data: kInvoiceCreateInput!) {
+mutation createInvoice(
+  $data: kInvoiceCreateInput!
+  $timeSheetEntryWhere: TimeSheetEntryWhereInput = {}
+) {
   createInvoice(data: $data) {
     ...InvoiceFragment
   }
 }
 
-mutation updateInvoiceStatus($status: InvoiceStatus!, $id: ID!) {
+mutation updateInvoiceStatus(
+  $status: InvoiceStatus!
+  $id: ID!
+  $timeSheetEntryWhere: TimeSheetEntryWhereInput = {}
+) {
   updateInvoiceStatus(status: $status, id: $id) {
     ...InvoiceFragment
   }

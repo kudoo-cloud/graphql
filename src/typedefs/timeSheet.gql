@@ -8,7 +8,7 @@ query timeSheets(
   $before: String
   $first: Int
   $last: Int
-	$timeSheetEntryWhere: TimeSheetEntryWhereInput
+  $timeSheetEntryWhere: TimeSheetEntryWhereInput = {}
 ) {
   timeSheets(
     where: $where
@@ -33,14 +33,20 @@ query timeSheets(
   }
 }
 
-query timeSheet($where: WhereUniqueInput!) {
+query timeSheet(
+  $where: WhereUniqueInput!
+  $timeSheetEntryWhere: TimeSheetEntryWhereInput = {}
+) {
   timeSheet(where: $where) {
     ...TimeSheetFragment
   }
 }
 
 # Create TimeSheet
-mutation createTimeSheet($data: kTimeSheetCreateInput!) {
+mutation createTimeSheet(
+  $data: kTimeSheetCreateInput!
+  $timeSheetEntryWhere: TimeSheetEntryWhereInput = {}
+) {
   createTimeSheet(data: $data) {
     ...TimeSheetFragment
   }
@@ -50,6 +56,7 @@ mutation createTimeSheet($data: kTimeSheetCreateInput!) {
 mutation updateTimeSheet(
   $data: kTimeSheetUpdateInput!
   $where: WhereUniqueInput!
+  $timeSheetEntryWhere: TimeSheetEntryWhereInput = {}
 ) {
   updateTimeSheet(data: $data, where: $where) {
     ...TimeSheetFragment
@@ -57,7 +64,10 @@ mutation updateTimeSheet(
 }
 
 # Delete TimeSheet
-mutation deleteTimeSheet($where: WhereUniqueInput!) {
+mutation deleteTimeSheet(
+  $where: WhereUniqueInput!
+  $timeSheetEntryWhere: TimeSheetEntryWhereInput = {}
+) {
   deleteTimeSheet(where: $where) {
     ...TimeSheetFragment
   }
