@@ -10,11 +10,21 @@ export {
 
 // hocs
 export {
+  withLogin,
+  withRegister,
+  withRememberPassword,
+  withUpdateUser,
+  withResetPassword
+} from "./hoc/account";
+
+export {
   withCompany,
   withCompanies,
+  withCreateCompany,
   withUpdateCompany,
   withDeleteCompanyMember,
-  withUpdateCompanyMember
+  withUpdateCompanyMember,
+  withInviteMember
 } from "./hoc/company";
 
 export {
