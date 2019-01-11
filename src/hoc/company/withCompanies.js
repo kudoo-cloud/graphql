@@ -21,6 +21,7 @@ export default (config: any = () => {}, responseFun?: Function) => (
       options: props => {
         const params = config(props);
         return {
+          skip: params.skip,
           variables: get(params, "variables", {
             joined: false,
             created: false
