@@ -1,14 +1,13 @@
-import graphqlRequest from "./index";
+import graphqlRequest from "./Request";
 import * as TimeSheetEntryQuery from "typedefs/timeSheetEntry.gql";
 
 class TimesheetEntries {
-  static async getAll({ filters, orders } = {}) {
+  static async getAll({ where } = {}) {
     return graphqlRequest.getAll(
       "timeSheetEntries",
       TimeSheetEntryQuery.timeSheetEntries,
       {
-        filters,
-        orders
+        where
       }
     );
   }

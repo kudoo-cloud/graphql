@@ -97,15 +97,3 @@ mutation deleteTimeSheetEntry($id: ID) {
     }
   }
 }
-
-fragment TimeSheetEntryFragment on TimeSheetEntry {
-  id
-  customerId
-  date
-  duration
-  isArchived
-  projectId
-  serviceId
-  timeSheetId
-	isInvoiced
-}

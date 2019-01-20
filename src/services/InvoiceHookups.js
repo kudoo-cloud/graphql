@@ -1,14 +1,13 @@
-import graphqlRequest from "./index";
+import graphqlRequest from "./Request";
 import * as InvoiceHookupQuery from "typedefs/invoiceHookup.gql";
 
 class InvoiceHookups {
-  static async getAll({ filters, orders } = {}) {
+  static async getAll({ where } = {}) {
     return graphqlRequest.getAll(
       "invoiceHookups",
       InvoiceHookupQuery.invoiceHookups,
       {
-        filters,
-        orders
+        where
       }
     );
   }

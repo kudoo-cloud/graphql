@@ -1,7 +1,23 @@
 #import "./commonFragments.gql"
 
-query services($filters: ServiceFilters = {}, $orders: [[String]]) {
-  services(first: 1000, filters: $filters, orders: $orders) {
+query services(
+  $where: ServiceWhereInput
+  $orderBy: ServiceOrderByInput
+  $skip: Int
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
+) {
+  services(
+    where: $where
+    orderBy: $orderBy
+    skip: $skip
+    after: $after
+    before: $before
+    first: $first
+    last: $last
+  ) {
     pageInfo {
       ...PageInfoFragment
     }
@@ -9,99 +25,37 @@ query services($filters: ServiceFilters = {}, $orders: [[String]]) {
       node {
         ...ServiceFragment
       }
+      cursor
+    }
+    aggregate {
+      count
     }
   }
 }
 
-query service($id: String) {
-  node(id: $id) {
-    ... on Service {
-      ...ServiceFragment
-    }
+query service($where: WhereUniqueInput!) {
+  service(where: $where) {
+    ...ServiceFragment
   }
 }
 
 # Create Service
-mutation createService(
-  $name: String
-  $billingType: String
-  $companyId: ID!
-  $includeConsTax: Boolean
-  $isTemplate: Boolean
-  $timeBasedType: TimeBasedType
-  $totalAmount: MoneyInput
-) {
-  createService(
-    name: $name
-    billingType: $billingType
-    companyId: $companyId
-    includeConsTax: $includeConsTax
-    isTemplate: $isTemplate
-    timeBasedType: $timeBasedType
-    totalAmount: $totalAmount
-  ) {
-    successful
-    messages {
-      field
-      message
-    }
-    result {
-      ...ServiceFragment
-    }
+mutation createService($data: kServiceCreateInput!) {
+  createService(data: $data) {
+    ...ServiceFragment
   }
 }
 
 # Update Service
-mutation updateService(
-  $id: ID!
-  $name: String
-  $billingType: String
-  $companyId: ID!
-  $includeConsTax: Boolean
-  $isTemplate: Boolean
-  $timeBasedType: TimeBasedType
-  $totalAmount: MoneyInput
-  $isArchived: Boolean
-) {
-  updateService(
-    id: $id
-    name: $name
-    billingType: $billingType
-    companyId: $companyId
-    includeConsTax: $includeConsTax
-    isTemplate: $isTemplate
-    timeBasedType: $timeBasedType
-    totalAmount: $totalAmount
-    isArchived: $isArchived
-  ) {
-    successful
-    result {
-      ...ServiceFragment
-    }
+mutation updateService($data: kServiceUpdateInput!, $where: WhereUniqueInput!) {
+  updateService(data: $data, where: $where) {
+    ...ServiceFragment
   }
 }
 
 # Delete Service
-mutation deleteService($id: ID!) {
-  deleteService(id: $id) {
-    successful
-    result {
-      ...ServiceFragment
-    }
-  }
-}
-
-fragment ServiceFragment on Service {
-  id
-  name
-  billingType
-  companyId
-  includeConsTax
-  isTemplate
-  timeBasedType
-  isArchived
-  totalAmount {
-    currency
-    value
+mutation deleteService($where: WhereUniqueInput!) {
+  deleteService(where: $where) {
+    ...ServiceFragment
   }
 }

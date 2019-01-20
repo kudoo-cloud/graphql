@@ -1,131 +1,34 @@
 #import "./commonFragments.gql"
 
-query companies($filters: CompanyFilters = {}, $orders: [[String]]) {
-  companies(first: 1000, filters: $filters, orders: $orders) {
-    pageInfo {
-      ...PageInfoFragment
-    }
-    edges {
-      node {
-        ...CompanyFragment
-      }
-    }
+query companies($joined: Boolean, $created: Boolean) {
+  companies(joined: $joined, created: $created) {
+    ...CompanyFragment
   }
 }
 
-query company($id: String) {
-  node(id: $id) {
-    ... on Company {
-      ...CompanyFragment
-    }
+query company($where: WhereUniqueInput) {
+  company(where: $where) {
+    ...CompanyFragment
   }
 }
 
 # Create Company
-mutation createCompany(
-  $govNumber: String
-  $activePlanId: ID
-  $businessType: String
-  $legalName: String
-  $name: String
-  $salesTax: Boolean
-  $url: String
-  $bankAccount: BankAccountInput
-  $timeSheetSettings: TimeSheetSettingsInput
-	$country: CountryCode
-) {
-  createCompany(
-    govNumber: $govNumber
-    activePlanId: $activePlanId
-    businessType: $businessType
-    legalName: $legalName
-    name: $name
-    salesTax: $salesTax
-    url: $url
-    bankAccount: $bankAccount
-    timeSheetSettings: $timeSheetSettings
-		country: $country
-  ) {
-    successful
-    messages {
-      field
-      message
-    }
-    result {
-      ...CompanyFragment
-    }
+mutation createCompany($data: kCompanyCreateInput!) {
+  createCompany(data: $data) {
+    ...CompanyFragment
   }
 }
 
 # update Company
-mutation updateCompany(
-  $govNumber: String
-  $activePlanId: ID
-  $businessType: String
-  $legalName: String
-  $name: String
-  $salesTax: Boolean
-  $url: String
-  $isArchived: Boolean
-  $id: ID!
-  $bankAccount: BankAccountInput
-  $timeSheetSettings: TimeSheetSettingsInput
-	$country: CountryCode
-	$logo: EnhancedUpload
-) {
-  updateCompany(
-    govNumber: $govNumber
-    activePlanId: $activePlanId
-    businessType: $businessType
-    legalName: $legalName
-    name: $name
-    salesTax: $salesTax
-    url: $url
-    isArchived: $isArchived
-    id: $id
-    bankAccount: $bankAccount
-    timeSheetSettings: $timeSheetSettings
-		country: $country
-		logo: $logo
-  ) {
-    successful
-    messages {
-      field
-      message
-    }
-    result {
-      ...CompanyFragment
-    }
+mutation updateCompany($data: kCompanyUpdateInput!, $where: WhereUniqueInput!) {
+  updateCompany(data: $data, where: $where) {
+    ...CompanyFragment
   }
 }
 
-fragment CompanyFragment on Company {
-  id
-  name
-  legalName
-  govNumber
-  activePlanId
-  businessType
-  isArchived
-  logo {
-    fileName
-    url
-  }
-	country
-  salesTax
-  url
-  traderId
-  bankAccount {
-    code
-    name
-    number
-    requestPaymentDescription
-  }
-  timeSheetSettings {
-    archiveEvery
-    autoSendInvoices
-    groupEvery
-    workingHours
-		approvalsEnabled
+# Invite
+mutation invite($email: String!, $role: CompanyMemberRole!) {
+  invite(email: $email, role: $role) {
+    success
   }
 }

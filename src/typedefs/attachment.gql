@@ -1,0 +1,7 @@
+#import "./commonFragments.gql"
+
+mutation deleteAttachment($where: WhereUniqueInput!) {
+  deleteAttachment(where: $where) {
+    ...AttachmentFragment
+  }
+}

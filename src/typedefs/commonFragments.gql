@@ -5,69 +5,300 @@ fragment PageInfoFragment on PageInfo {
   hasPreviousPage
 }
 
-fragment MoneyFragment on Money {
-  currency
-  isPercent
-  value
+fragment UserFragment on User {
+  id
+  activePlan {
+    ...PlanFragment
+  }
+  contactNumber
+  email
+  firstName
+  isActive
+  isArchived
+  isDeleted
+  isRoot
+  jobTitle
+  lastName
+  password
+  secondAuthEnabled
 }
 
-fragment DiscountFragment on Discount {
+fragment AttachmentFragment on Attachment {
+  id
+  description
+  fileName
   label
-  order
-  value
+  url
+  s3Bucket
+  s3Key
 }
 
-fragment EmailFragment on Email {
+fragment PlanFragment on Plan {
+  id
+  company {
+    id
+  }
+  is_active
+  is_archived
+  is_deleted
+  max_users
   name
-  value
-}
-
-fragment ContactNumberFragment on ContactNumber {
-  countryCode
-  nationalNumber
-  type
-}
-
-fragment ContactFragment on Contact {
-  emails {
-    ...EmailFragment
-  }
-  names
-  numbers {
-    ...ContactNumberFragment
-  }
-  surname
-  websites
+  price
 }
 
 fragment AddressFragment on Address {
-  contact {
+  id
+  street
+  city
+  state
+  country
+  postCode
+  latitude
+  longitude
+}
+
+fragment ContactFragment on Contact {
+  id
+  name
+  surname
+  email
+  mobileCode
+  mobileNumber
+  landlineCode
+  landlineNumber
+}
+
+fragment CompanyShortFragment on Company {
+  id
+  name
+}
+
+fragment CompanyMemberFragment on CompanyMember {
+  id
+  company {
+    ...CompanyShortFragment
+  }
+  isArchived
+  isDeleted
+  role
+  status
+  user {
+    ...UserFragment
+  }
+}
+
+fragment CompanyFragment on Company {
+  id
+  bankAccount
+  # {
+  #   name
+  #   code
+  #   accountNumber
+  #   description
+  # }
+  businessType
+  country
+  govNumber
+  isArchived
+  legalName
+  logo {
+    ...AttachmentFragment
+  }
+  name
+  salesTax
+  timeSheetSettings
+  # {
+  #   autoSendInvoices
+  #   groupEvery
+  #   workingHours
+  #   approvalsEnabled
+  # }
+  websiteURL
+  addresses {
+    ...AddressFragment
+  }
+  contacts {
     ...ContactFragment
   }
-  countryCode
-  data
+  companyMembers {
+    ...CompanyMemberFragment
+  }
 }
 
-fragment EcommerceAddressFragment on EcommerceAddress {
+fragment ServiceFragment on Service {
+  id
+  billingType
+  company {
+    ...CompanyShortFragment
+  }
+  includeConsTax
+  isArchived
+  isDeleted
+  isTemplate
+  name
+  timeBasedType
+  totalAmount
+}
+
+fragment CustomerFragment on Customer {
+  id
+  company {
+    ...CompanyShortFragment
+  }
+  description
+  govNumber
+  isArchived
+  isDeleted
+  name
+  addresses {
+    ...AddressFragment
+  }
   contacts {
-    ...EcommerceContactFragment
+    ...ContactFragment
   }
-  countryCode
-  data
-  isDefault
-  isDefaultBilling
-  isDefaultShipping
 }
 
-fragment EcommerceContactFragment on EcommerceContact {
-  emails {
-    ...EmailFragment
+fragment ProjectServiceRuleFragment on ProjectServiceRule {
+  id
+  projectService {
+    id
   }
-  isDefault
-  names
-  numbers {
-    ...ContactNumberFragment
+  amount
+  percent
+  type
+  isPercent
+}
+
+fragment ProjectServiceFragment on ProjectService {
+  id
+  amount
+  isArchived
+  isDeleted
+  project {
+    id
   }
-  surname
-  websites
+  rules {
+    ...ProjectServiceRuleFragment
+  }
+  service {
+    ...ServiceFragment
+  }
+}
+
+fragment ProjectFragment on Project {
+  id
+  company {
+    ...CompanyShortFragment
+  }
+  customer {
+    ...CustomerFragment
+  }
+  description
+  endsAt
+  isArchived
+  isDeleted
+  name
+  projectService {
+    ...ProjectServiceFragment
+  }
+  startsAt
+  status
+}
+
+fragment TimeSheetEntryFragment on TimeSheetEntry {
+  id
+  date
+  duration
+  isArchived
+  isDeleted
+  isInvoiced
+  timeSheet {
+    id
+  }
+  customer {
+    ...CustomerFragment
+  }
+  project {
+    ...ProjectFragment
+  }
+  service {
+    ...ServiceFragment
+  }
+}
+
+fragment TimeSheetFragment on TimeSheet {
+  id
+  attachments {
+    ...AttachmentFragment
+  }
+  company {
+    ...CompanyShortFragment
+  }
+  endsAt
+  isArchived
+  isDeleted
+  number
+  preview {
+    ...AttachmentFragment
+  }
+  startsAt
+  status
+  timeSheetEntries(where: $timeSheetEntryWhere, orderBy: date_ASC) {
+    ...TimeSheetEntryFragment
+  }
+  user {
+    ...UserFragment
+  }
+}
+
+fragment InvoiceItemEntryFragment on InvoiceItemEntry {
+  id
+  order
+  description
+  name
+  price
+  quantity
+  tax
+  invoice {
+    id
+  }
+  project {
+    ...ProjectFragment
+  }
+  service {
+    ...ServiceFragment
+  }
+  timeSheetEntry {
+    ...TimeSheetEntryFragment
+  }
+  timeSheet {
+    ...TimeSheetFragment
+  }
+}
+
+fragment InvoiceFragment on Invoice {
+  id
+  title
+  attachments {
+    ...AttachmentFragment
+  }
+  buyer {
+    ...CustomerFragment
+  }
+  number
+  description
+  invoiceDate
+  dueDate
+  preview {
+    ...AttachmentFragment
+  }
+  items {
+    ...InvoiceItemEntryFragment
+  }
+  seller {
+    ...CompanyFragment
+  }
+  status
+  type
+  total
 }

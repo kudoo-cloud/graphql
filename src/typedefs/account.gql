@@ -16,85 +16,77 @@ mutation register(
     password: $password
     passwordRepeat: $passwordRepeat
   ) {
-    messages {
-      code
-      field
-      message
-    }
-    result {
-      ...UserFragment
-    }
-    successful
+    success
   }
 }
 
 # Login
 mutation login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
-    messages {
-      code
-      field
-      message
+    id
+    activePlan {
+      ...PlanFragment
     }
-    result {
-      ...SessionFragment
-    }
-    successful
-  }
-}
-
-# Invite
-mutation invite($email: String!, $role: CompanyAccessLevel!) {
-  invite(email: $email, role: $role) {
-    successful
+    contactNumber
+    email
+    firstName
+    isActive
+    isArchived
+    jobTitle
+    lastName
+    secondAuthEnabled
+    token
   }
 }
 
 # remember
 mutation remember($email: String!) {
   remember(email: $email) {
-    successful
+    success
+  }
+}
+
+# Reset Password
+mutation resetPassword($password: String!, $passwordRepeat: String!) {
+  resetPassword(password: $password, passwordRepeat: $passwordRepeat) {
+    success
   }
 }
 
 # update current user
-mutation update(
-  $accessLevel: String
-  $activePlanId: ID
-  $email: String
+mutation updateUser(
   $firstName: String
-  $isArchived: Boolean
-  $jobTitle: String
   $lastName: String
-  $contactNumber: ContactNumberInput
-  $oldPassword: String
+  $jobTitle: String
+  $contactNumber: Json
   $secondAuthEnabled: Boolean
+  $oldPassword: String
   $password: String
   $passwordRepeat: String
 ) {
-  update(
-    accessLevel: $accessLevel
-    activePlanId: $activePlanId
-    email: $email
+  updateUser(
     firstName: $firstName
-    isArchived: $isArchived
-    jobTitle: $jobTitle
     lastName: $lastName
+    jobTitle: $jobTitle
     contactNumber: $contactNumber
     secondAuthEnabled: $secondAuthEnabled
     oldPassword: $oldPassword
     password: $password
     passwordRepeat: $passwordRepeat
   ) {
-    messages {
-      code
-      field
-      message
+    id
+    activePlan {
+      ...PlanFragment
     }
-    result {
-      ...UserFragment
-    }
-    successful
+    contactNumber
+    email
+    firstName
+    isActive
+    isArchived
+    jobTitle
+    lastName
+    secondAuthEnabled
+    token
   }
 }
 
@@ -111,9 +103,6 @@ query me {
       user {
         ...UserFragment
       }
-    }
-    session {
-      ...SessionFragment
     }
     user {
       ...UserFragment
@@ -146,28 +135,4 @@ mutation logout {
   logout {
     successful
   }
-}
-
-fragment UserFragment on User {
-  activePlanId
-  email
-  firstName
-  id
-  isArchived
-  isRoot
-  jobTitle
-  lastName
-  secondAuthEnabled
-  contactNumber {
-    countryCode
-    nationalNumber
-    type
-  }
-}
-
-fragment SessionFragment on Session {
-  expiresAt
-  signedAt
-  token
-  userId
 }

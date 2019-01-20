@@ -1,29 +1,33 @@
 {
   "name": "@kudoo/graphql",
-  "version": "1.0.1",
+  "version": "2.0.0-beta.1",
   "description": "Graphql services and typedefs for Kudoo",
   "main": "./build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "copy-typedefs": "ncp ./src/typedefs ./build/typedefs",
     "build": "babel src --out-dir ./build && npm run copy-typedefs",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "watch": "watch \"npm run build\" ./src"
   },
   "author": "Kudoo Cloud Pty Ltd",
   "license": "MIT",
   "dependencies": {
     "apollo-link": "^1.2.3",
-    "apollo-link-http": "^1.5.5",
+    "apollo-link-http": "1.5.7",
     "cross-fetch": "^2.2.2",
     "es6-promise": "^4.2.5",
     "exports-loader": "^0.7.0",
-    "graphql": "^0.13.2",
+    "graphql": "14.0.0",
     "graphql-tag": "^2.10.0",
     "imports-loader": "^0.8.0",
     "lodash": "^4.17.11",
     "ncp": "^2.0.0",
     "react": "16.5.2",
-    "react-apollo": "2.0.4"
+    "react-apollo": "2.0.4",
+    "react-dom": "16.5.2",
+    "recompose": "^0.30.0",
+    "watch": "^1.0.2"
   },
   "devDependencies": {
     "@babel/node": "^7.0.0",

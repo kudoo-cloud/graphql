@@ -1,11 +1,23 @@
 #import "./commonFragments.gql"
 
 query projects(
-  $first: Int = 1000
-  $filters: ProjectFilters = {}
-  $orders: [[String]]
+  $where: ProjectWhereInput
+  $orderBy: ProjectOrderByInput
+  $skip: Int
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
 ) {
-  projects(first: $first, filters: $filters, orders: $orders) {
+  projects(
+    where: $where
+    orderBy: $orderBy
+    skip: $skip
+    after: $after
+    before: $before
+    first: $first
+    last: $last
+  ) {
     pageInfo {
       ...PageInfoFragment
     }
@@ -14,88 +26,39 @@ query projects(
         ...ProjectFragment
       }
     }
+    aggregate {
+      count
+    }
   }
 }
 
-query project($id: String) {
-  node(id: $id) {
-    ... on Project {
-      ...ProjectFragment
-    }
+query project($where: WhereUniqueInput!) {
+  project(where: $where) {
+    ...ProjectFragment
   }
 }
 
 query countProjects($filters: ProjectFilters = {}) {
-	countProjects(filters:$filters)
+  countProjects(filters: $filters)
 }
 
 # Create Project
-mutation createProject(
-  $companyId: ID!
-  $customerId: ID
-  $description: String
-  $endsAt: NaiveDateTime
-  $name: String!
-  $startsAt: NaiveDateTime
-) {
-  createProject(
-    companyId: $companyId
-    customerId: $customerId
-    description: $description
-    endsAt: $endsAt
-    name: $name
-    startsAt: $startsAt
-  ) {
-    successful
-    messages {
-      field
-      message
-    }
-    result {
-      ...ProjectFragment
-    }
+mutation createProject($data: kProjectCreateInput!) {
+  createProject(data: $data) {
+    ...ProjectFragment
   }
 }
 
 # Update Project
-mutation updateProject(
-  $companyId: ID
-  $customerId: ID
-  $description: String
-  $endsAt: NaiveDateTime
-  $id: ID!
-  $isArchived: Boolean
-  $name: String
-  $startsAt: NaiveDateTime
-) {
-  updateProject(
-    companyId: $companyId
-    customerId: $customerId
-    description: $description
-    endsAt: $endsAt
-    id: $id
-    isArchived: $isArchived
-    name: $name
-    startsAt: $startsAt
-  ) {
-    successful
-    messages {
-      field
-      message
-    }
-    result {
-      ...ProjectFragment
-    }
+mutation updateProject($data: kProjectUpdateInput!, $where: WhereUniqueInput!) {
+  updateProject(data: $data, where: $where) {
+    ...ProjectFragment
   }
 }
 
-fragment ProjectFragment on Project {
-  companyId
-  customerId
-  description
-  endsAt
-  id
-  isArchived
-  name
-  startsAt
+# Delete Project
+mutation deleteProject($where: WhereUniqueInput!) {
+  deleteProject(where: $where) {
+    ...ProjectFragment
+  }
 }

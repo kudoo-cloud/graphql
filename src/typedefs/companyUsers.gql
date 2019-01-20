@@ -1,72 +1,18 @@
 #import "./commonFragments.gql"
 
-query companiesMembers($filters: CompanyFilters = {}, $orders: [[String]]) {
-  companiesMembers(first: 1000, filters: $filters, orders: $orders) {
-    pageInfo {
-      ...PageInfoFragment
-    }
-    edges {
-      node {
-        ...CompanyMemberFragment
-      }
-    }
-  }
-}
-
-# Create Company Member
-mutation createCompanyMember($companyId: ID!, $userId: ID!) {
-  createCompanyMember(companyId: $companyId, userId: $userId) {
-    result {
-      ...CompanyMemberFragment
-    }
-    messages {
-      code
-      message
-    }
-    successful
-  }
-}
-
 # delete Company Member
 mutation updateCompanyMember(
-  $companyId: ID!
-  $isArchived: Boolean
-  $userId: ID!
+  $data: kCompanyMemberUpdateInput!
+  $where: WhereUniqueInput!
 ) {
-  updateCompanyMember(
-    companyId: $companyId
-    isArchived: $isArchived
-    userId: $userId
-  ) {
-    result {
-      ...CompanyMemberFragment
-    }
-    messages {
-      code
-      message
-    }
-    successful
+  updateCompanyMember(data: $data, where: $where) {
+    ...CompanyMemberFragment
   }
 }
 
 # delete Company Member
-mutation deleteCompanyMember($companyId: ID!, $userId: ID!) {
-  deleteCompanyMember(companyId: $companyId, userId: $userId) {
-    result {
-      ...CompanyMemberFragment
-    }
-    messages {
-      code
-      message
-    }
-    successful
+mutation deleteCompanyMember($id: ID!) {
+  deleteCompanyMember(id: $id) {
+    success
   }
-}
-
-fragment CompanyMemberFragment on CompanyMember {
-  companyId
-  isArchived
-  userId
-  role
-  status
 }

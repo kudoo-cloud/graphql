@@ -10,7 +10,7 @@ query projectsServices(
     }
     edges {
       node {
-        ...ProjectServiceFragment
+        ...ProjectServiceFragment1
       }
     }
   }
@@ -19,7 +19,7 @@ query projectsServices(
 query projectService($id: String) {
   node(id: $id) {
     ... on ProjectService {
-      ...ProjectServiceFragment
+      ...ProjectServiceFragment1
     }
   }
 }
@@ -43,7 +43,7 @@ mutation createProjectService(
       message
     }
     result {
-      ...ProjectServiceFragment
+      ...ProjectServiceFragment1
     }
   }
 }
@@ -69,12 +69,12 @@ mutation updateProjectService(
       message
     }
     result {
-      ...ProjectServiceFragment
+      ...ProjectServiceFragment1
     }
   }
 }
 
-fragment ProjectServiceFragment on ProjectService {
+fragment ProjectServiceFragment1 on ProjectService {
   amount {
     value
     currency

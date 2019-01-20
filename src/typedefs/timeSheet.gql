@@ -1,0 +1,93 @@
+#import "./commonFragments.gql"
+
+query timeSheets(
+  $where: TimeSheetWhereInput
+  $orderBy: TimeSheetOrderByInput
+  $skip: Int
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
+  $timeSheetEntryWhere: TimeSheetEntryWhereInput = {}
+) {
+  timeSheets(
+    where: $where
+    orderBy: $orderBy
+    skip: $skip
+    after: $after
+    before: $before
+    first: $first
+    last: $last
+  ) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...TimeSheetFragment
+      }
+    }
+    aggregate {
+      count
+    }
+  }
+}
+
+query timeSheet(
+  $where: WhereUniqueInput!
+  $timeSheetEntryWhere: TimeSheetEntryWhereInput = {}
+) {
+  timeSheet(where: $where) {
+    ...TimeSheetFragment
+  }
+}
+
+# Create TimeSheet
+mutation createTimeSheet(
+  $data: kTimeSheetCreateInput!
+  $timeSheetEntryWhere: TimeSheetEntryWhereInput = {}
+) {
+  createTimeSheet(data: $data) {
+    ...TimeSheetFragment
+  }
+}
+
+# Update TimeSheet
+mutation updateTimeSheet(
+  $data: kTimeSheetUpdateInput!
+  $where: WhereUniqueInput!
+  $timeSheetEntryWhere: TimeSheetEntryWhereInput = {}
+) {
+  updateTimeSheet(data: $data, where: $where) {
+    ...TimeSheetFragment
+  }
+}
+
+# Delete TimeSheet
+mutation deleteTimeSheet(
+  $where: WhereUniqueInput!
+  $timeSheetEntryWhere: TimeSheetEntryWhereInput = {}
+) {
+  deleteTimeSheet(where: $where) {
+    ...TimeSheetFragment
+  }
+}
+
+# Notify TimeSheet
+mutation timeSheetNotify(
+  $timeSheetId: ID!
+  $to: [String!]!
+  $cc: [String!]!
+  $bcc: [String!]!
+) {
+  timeSheetNotify(timeSheetId: $timeSheetId, to: $to, cc: $cc, bcc: $bcc) {
+    success
+  }
+}
+
+# Approve TimeSheet
+mutation timeSheetApprove($timeSheetId: ID!, $to: [String!]!) {
+  timeSheetApprove(timeSheetId: $timeSheetId, to: $to) {
+    success
+  }
+}

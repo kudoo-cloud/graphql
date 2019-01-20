@@ -1,13 +1,13 @@
 import get from "lodash/get";
 
 export const handleMutationResponse = (res, key) => {
-  const result = get(res, `data.${key}.result`, null);
-  if (get(res, `data.${key}.successful`, false)) {
+  const errors: any = get(res, `errors`, []);
+  if (errors && errors.length > 0) {
+    const str = errors.map(msg => `${msg.message}`) || [];
+    return { error: str, success: false, result: null };
+  }
+  const result: any = get(res, `data.${key}`, null);
+  if (result) {
     return { error: null, success: true, result };
   }
-
-  const msgs = get(res, `data.${key}.messages`, []);
-  let str = [];
-  str = msgs.map(msg => `${msg.field || ""} ${msg.message}`);
-  return { error: str, success: false, result };
 };

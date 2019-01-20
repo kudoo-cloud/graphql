@@ -1,11 +1,23 @@
 #import "./commonFragments.gql"
 
 query customers(
-  $first: Int = 1000
-  $filters: CustomerFilters = {}
-  $orders: [[String]]
+  $where: CustomerWhereInput
+  $orderBy: CustomerOrderByInput
+  $skip: Int
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
 ) {
-  customers(first: $first, filters: $filters, orders: $orders) {
+  customers(
+    where: $where
+    orderBy: $orderBy
+    skip: $skip
+    after: $after
+    before: $before
+    first: $first
+    last: $last
+  ) {
     pageInfo {
       ...PageInfoFragment
     }
@@ -14,76 +26,38 @@ query customers(
         ...CustomerFragment
       }
     }
+    aggregate {
+      count
+    }
   }
 }
 
-query customer($id: String) {
-  node(id: $id) {
-    ... on Customer {
-      ...CustomerFragment
-    }
+query customer($where: WhereUniqueInput) {
+  customer(where: $where) {
+    ...CustomerFragment
   }
 }
 
 # Create Customer
-mutation createCustomer($govNumber: String, $name: String, $companyId: ID) {
-  createCustomer(govNumber: $govNumber, name: $name, companyId: $companyId) {
-    successful
-    messages {
-      field
-      message
-    }
-    result {
-      ...CustomerFragment
-    }
+mutation createCustomer($data: kCustomerCreateInput!) {
+  createCustomer(data: $data) {
+    ...CustomerFragment
   }
 }
 
 # Update Customer
 mutation updateCustomer(
-  $govNumber: String
-  $companyId: ID
-  $id: ID!
-  $isArchived: Boolean
-  $name: String
+  $where: WhereUniqueInput!
+  $data: kCustomerUpdateInput!
 ) {
-  updateCustomer(
-    govNumber: $govNumber
-    companyId: $companyId
-    id: $id
-    isArchived: $isArchived
-    name: $name
-  ) {
-    successful
-    messages {
-      field
-      message
-    }
-    result {
-      ...CustomerFragment
-    }
+  updateCustomer(where: $where, data: $data) {
+    ...CustomerFragment
   }
 }
 
 # Delete Customer
-mutation deleteCustomer($id: ID!) {
-  deleteCustomer(id: $id) {
-    successful
-    messages {
-      field
-      message
-    }
-    result {
-      ...CustomerFragment
-    }
+mutation deleteCustomer($where: WhereUniqueInput!) {
+  deleteCustomer(where: $where) {
+    ...CustomerFragment
   }
-}
-
-fragment CustomerFragment on Customer {
-  id
-  name
-  govNumber
-  companyId
-  isArchived
-  traderId
 }
