@@ -9,9 +9,16 @@ const plugins = [
       alias: {
         "typedefs/*": "./src/typedefs/",
         "services/*": "./src/services/",
-				"hoc/*": "./src/hoc/",
-				"helpers/*": "./src/helpers/"
+        "hoc/*": "./src/hoc/",
+        "helpers/*": "./src/helpers/"
       }
+    }
+  ],
+  [
+    "@babel/plugin-transform-runtime",
+    {
+      helpers: true,
+      regenerator: true
     }
   ]
 ];

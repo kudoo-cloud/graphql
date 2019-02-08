@@ -13,6 +13,7 @@
   "author": "Kudoo Cloud Pty Ltd",
   "license": "MIT",
   "dependencies": {
+    "@babel/runtime": "^7.3.1",
     "apollo-link": "^1.2.3",
     "apollo-link-http": "1.5.7",
     "cross-fetch": "^2.2.2",
@@ -30,14 +31,15 @@
     "watch": "^1.0.2"
   },
   "devDependencies": {
-    "@babel/node": "^7.0.0",
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
-    "@babel/preset-flow": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
+    "@babel/node": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-transform-async-to-generator": "^7.1.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.1.0",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
     "babel-plugin-import-graphql": "^2.6.2",
     "babel-plugin-module-resolver": "^3.1.1"
   },
