@@ -7,7 +7,8 @@ export {
   TimesheetEntriesService,
   TimesheetsService,
   MainAccountService,
-  LedgerPostingService
+  LedgerPostingService,
+  LedgerTransactionService
 } from "./services";
 
 // hocs
