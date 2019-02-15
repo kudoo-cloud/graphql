@@ -302,3 +302,41 @@ fragment InvoiceFragment on Invoice {
   type
   total
 }
+
+fragment MainAccountFragment on MainAccount {
+  id
+  company {
+    ...CompanyShortFragment
+  }
+  code
+  name
+  type
+  isArchived
+  isDeleted
+}
+
+fragment LedgerTransactionFragment on LedgerTransaction {
+  id
+  mainAccount {
+    ...MainAccountFragment
+  }
+  drcr
+  amount
+  currency
+  date
+  company {
+    ...CompanyShortFragment
+  }
+  isArchived
+  isDeleted
+}
+
+fragment LedgerPostingFragment on LedgerPosting {
+  id
+  mainAccount {
+    ...MainAccountFragment
+  }
+  postingType
+  isArchived
+  isDeleted
+}

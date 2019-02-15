@@ -5,7 +5,9 @@ export {
   InvoiceHookupsService,
   InvoicesService,
   TimesheetEntriesService,
-  TimesheetsService
+  TimesheetsService,
+  MainAccountService,
+  LedgerPostingService
 } from "./services";
 
 // hocs
@@ -22,6 +24,8 @@ export {
   withCompanies,
   withCreateCompany,
   withUpdateCompany,
+  withDeleteCompany,
+  withUndeleteCompany,
   withDeleteCompanyMember,
   withUpdateCompanyMember,
   withInviteMember
@@ -70,3 +74,27 @@ export {
   withInvoiceNotify,
   withUpdateInvoiceStatus
 } from "./hoc/invoice";
+
+export {
+  withMainAccount,
+  withMainAccounts,
+  withCreateMainAccount,
+  withUpdateMainAccount,
+  withDeleteMainAccount
+} from "./hoc/mainAccount";
+
+export {
+  withLedgerTransaction,
+  withLedgerTransactions,
+  withCreateLedgerTransaction,
+  withUpdateLedgerTransaction,
+  withDeleteLedgerTransaction
+} from "./hoc/ledgerTransaction";
+
+export {
+  withLedgerPosting,
+  withLedgerPostings,
+  withCreateLedgerPosting,
+  withUpdateLedgerPosting,
+  withDeleteLedgerPosting
+} from "./hoc/ledgerPosting";

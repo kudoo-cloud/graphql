@@ -6,7 +6,8 @@ import { execute, makePromise, ApolloLink } from "apollo-link";
 class GraphQLRequest {
   constructor() {
     const httpLink = createHttpLink({
-      uri: process.env.GRAPHQL_API_URL,
+      //As sometimes process.env.GRAPHQL_API_URL results in undefined, Optional Url is added
+      uri: process.env.GRAPHQL_API_URL || "http://localhost:4000/api",
       fetch
     });
     const middlewareLink = new ApolloLink((operation, forward) => {

@@ -32,3 +32,17 @@ mutation invite($email: String!, $role: CompanyMemberRole!) {
     success
   }
 }
+
+# Delete Company
+mutation deleteCompany($id: ID!) {
+  deleteCompany(id: $id) {
+    ...CompanyFragment
+  }
+}
+
+# Undelete Company
+mutation undeleteCompany($id: ID!) {
+  undeleteCompany(id: $id) {
+    ...CompanyFragment
+  }
+}

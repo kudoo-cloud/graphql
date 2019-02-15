@@ -1,0 +1,63 @@
+#import "./commonFragments.gql"
+
+query mainAccounts(
+  $where: MainAccountWhereInput
+  $orderBy: MainAccountOrderByInput
+  $skip: Int
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
+) {
+  mainAccounts(
+    where: $where
+    orderBy: $orderBy
+    skip: $skip
+    after: $after
+    before: $before
+    first: $first
+    last: $last
+  ) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...MainAccountFragment
+      }
+    }
+    aggregate {
+      count
+    }
+  }
+}
+
+query mainAccount($where: MainAccountWhereInput) {
+  mainAccount(where: $where) {
+    ...MainAccountFragment
+  }
+}
+
+# Create MainAccount
+mutation createMainAccount($data: kMainAccountCreateInput!) {
+  createMainAccount(data: $data) {
+    ...MainAccountFragment
+  }
+}
+
+# Update MainAccount
+mutation updateMainAccount(
+  $where: WhereUniqueInput!
+  $data: kMainAccountUpdateInput!
+) {
+  updateMainAccount(where: $where, data: $data) {
+    ...MainAccountFragment
+  }
+}
+
+# Delete MainAccount
+mutation deleteMainAccount($where: WhereUniqueInput!) {
+  deleteMainAccount(where: $where) {
+    ...MainAccountFragment
+  }
+}

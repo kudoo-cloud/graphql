@@ -1,0 +1,63 @@
+#import "./commonFragments.gql"
+
+query ledgerPostings(
+  $where: LedgerPostingWhereInput
+  $orderBy: LedgerPostingOrderByInput
+  $skip: Int
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
+) {
+  ledgerPostings(
+    where: $where
+    orderBy: $orderBy
+    skip: $skip
+    after: $after
+    before: $before
+    first: $first
+    last: $last
+  ) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...LedgerPostingFragment
+      }
+    }
+    aggregate {
+      count
+    }
+  }
+}
+
+query ledgerPosting($where: WhereUniqueInput) {
+  ledgerPosting(where: $where) {
+    ...LedgerPostingFragment
+  }
+}
+
+# Create LedgerPosting
+mutation createLedgerPosting($data: kLedgerPostingCreateInput!) {
+  createLedgerPosting(data: $data) {
+    ...LedgerPostingFragment
+  }
+}
+
+# Update LedgerPosting
+mutation updateLedgerPosting(
+  $where: WhereUniqueInput!
+  $data: kLedgerPostingUpdateInput!
+) {
+  updateLedgerPosting(where: $where, data: $data) {
+    ...LedgerPostingFragment
+  }
+}
+
+# Delete LedgerPosting
+mutation deleteLedgerPosting($where: WhereUniqueInput!) {
+  deleteLedgerPosting(where: $where) {
+    ...LedgerPostingFragment
+  }
+}

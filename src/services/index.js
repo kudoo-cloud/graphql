@@ -4,5 +4,7 @@ export { default as InvoiceHookupsService } from "./InvoiceHookups";
 export { default as InvoicesService } from "./Invoices";
 export { default as TimesheetEntriesService } from "./TimesheetEntries";
 export { default as TimesheetsService } from "./Timesheets";
+export { default as MainAccountService } from "./MainAccount";
+export { default as LedgerPostingService } from "./LedgerPosting";
 
 export default GraphQLRequest;
