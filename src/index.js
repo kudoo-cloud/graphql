@@ -2,6 +2,7 @@
 export {
   default as GraphQLRequest,
   AccountService,
+  CompanyService,
   InvoiceHookupsService,
   InvoicesService,
   TimesheetEntriesService,
