@@ -33,6 +33,13 @@ mutation invite($email: String!, $role: CompanyMemberRole!) {
   }
 }
 
+# resendInvite
+mutation resendInvite($email: String!, $role: CompanyMemberRole!, $companyMemberId: ID!) {
+  resendInvite(email: $email, role: $role, companyMemberId: $companyMemberId) {
+    success
+  }
+}
+
 # Delete Company
 mutation deleteCompany($id: ID!) {
   deleteCompany(id: $id) {

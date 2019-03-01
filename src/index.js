@@ -30,7 +30,8 @@ export {
   withUndeleteCompany,
   withDeleteCompanyMember,
   withUpdateCompanyMember,
-  withInviteMember
+  withInviteMember,
+  withResendInvite,
 } from "./hoc/company";
 
 export {
