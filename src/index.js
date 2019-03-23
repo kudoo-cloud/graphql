@@ -109,3 +109,11 @@ export {
   withUpdateAsset,
   withDeleteAsset
 } from "./hoc/asset";
+
+export {
+  withAssetGroup,
+  withAssetGroups,
+  withCreateAssetGroup,
+  withUpdateAssetGroup,
+  withDeleteAssetGroup
+} from "./hoc/assetGroup";
