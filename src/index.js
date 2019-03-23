@@ -31,7 +31,7 @@ export {
   withDeleteCompanyMember,
   withUpdateCompanyMember,
   withInviteMember,
-  withResendInvite,
+  withResendInvite
 } from "./hoc/company";
 
 export {
@@ -101,3 +101,11 @@ export {
   withUpdateLedgerPosting,
   withDeleteLedgerPosting
 } from "./hoc/ledgerPosting";
+
+export {
+  withAsset,
+  withAssets,
+  withCreateAsset,
+  withUpdateAsset,
+  withDeleteAsset
+} from "./hoc/asset";

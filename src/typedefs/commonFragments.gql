@@ -341,3 +341,33 @@ fragment LedgerPostingFragment on LedgerPosting {
   isArchived
   isDeleted
 }
+
+fragment AssetGroupFragment on AssetGroup {
+  id
+  name
+  depreciationType
+  usefulLife
+  company {
+    ...CompanyFragment
+  }
+  isArchived
+  isDeleted
+}
+
+fragment AssetFragment on Asset {
+  id
+  name
+  assetGroup {
+    ...AssetGroupFragment
+  }
+  dateOfAquisition
+  aquisitionPrice
+  netBookValue
+  depreciation
+  salvageValue
+  company {
+    ...CompanyFragment
+  }
+  isArchived
+  isDeleted
+}
