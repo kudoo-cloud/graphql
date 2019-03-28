@@ -1,0 +1,63 @@
+#import "./commonFragments.gql"
+
+query bankTransactions(
+  $where: BankTransactionWhereInput
+  $orderBy: BankTransactionOrderByInput
+  $skip: Int
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
+) {
+  bankTransactions(
+    where: $where
+    orderBy: $orderBy
+    skip: $skip
+    after: $after
+    before: $before
+    first: $first
+    last: $last
+  ) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...BankTransactionFragment
+      }
+    }
+    aggregate {
+      count
+    }
+  }
+}
+
+query bankTransaction($where: WhereUniqueInput!) {
+  bankTransaction(where: $where) {
+    ...BankTransactionFragment
+  }
+}
+
+# Create BankTransaction
+mutation createBankTransaction($data: kBankTransactionCreateInput!) {
+  createBankTransaction(data: $data) {
+    ...BankTransactionFragment
+  }
+}
+
+# Update BankTransaction
+mutation updateBankTransaction(
+  $where: WhereUniqueInput!
+  $data: kBankTransactionUpdateInput!
+) {
+  updateBankTransaction(where: $where, data: $data) {
+    ...BankTransactionFragment
+  }
+}
+
+# Delete BankTransaction
+mutation deleteBankTransaction($where: WhereUniqueInput!) {
+  deleteBankTransaction(where: $where) {
+    ...BankTransactionFragment
+  }
+}

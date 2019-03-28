@@ -1,0 +1,63 @@
+#import "./commonFragments.gql"
+
+query pbsTpps(
+  $where: PbsTPPWhereInput
+  $orderBy: PbsTPPWhereInput
+  $skip: Int
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
+) {
+  pbsTPPs(
+    where: $where
+    orderBy: $orderBy
+    skip: $skip
+    after: $after
+    before: $before
+    first: $first
+    last: $last
+  ) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...PbsTPPFragment
+      }
+    }
+    aggregate {
+      count
+    }
+  }
+}
+
+query pbsTPP($where: WhereUniqueInput!) {
+  pbsTPP(where: $where) {
+    ...PbsTPPFragment
+  }
+}
+
+# Create PBSTPP
+mutation createPbsTPP($data: kPbsTPPCreateInput!) {
+  createPbsTPP(data: $data) {
+    ...PbsTPPFragment
+  }
+}
+
+# Update PBSTPP
+mutation updatePbsTPP(
+  $where: WhereUniqueInput!
+  $data: kPbsTPPUpdateInput!
+) {
+  updatePbsTPP(where: $where, data: $data) {
+    ...PbsTPPFragment
+  }
+}
+
+# Delete PBSTPP
+mutation deletePbsTPP($where: WhereUniqueInput!) {
+  deletePbsTPP(where: $where) {
+    ...PbsTPPFragment
+  }
+}

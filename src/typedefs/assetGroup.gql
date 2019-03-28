@@ -1,0 +1,57 @@
+#import "./commonFragments.gql"
+
+query assetGroup($where: WhereUniqueInput!) {
+  assetGroup(where: $where) {
+    ...AssetGroupFragment
+  }
+}
+
+query assetGroups(
+	$where: AssetGroupWhereInput
+	$orderBy: AssetGroupOrderByInput
+	$skip: Int
+	$after: String
+	$before: String
+	$first: Int
+	$last: Int
+) {
+  assets(
+    where: $where
+    orderBy: $orderBy
+    skip: $skip
+    after: $after
+    before: $before
+    first: $first
+    last: $last
+  ) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...AssetGroupFragment
+      }
+    }
+    aggregate {
+      count
+    }
+  }
+}
+
+mutation createAssetGroup($data: kAssetGroupCreateInput!) {
+  createAssetGroup(data: $data) {
+    ...AssetGroupFragment
+  }
+}
+
+mutation updateAssetGroup($where: WhereUniqueInput!, $data: kAssetGroupUpdateInput!) {
+  updateAssetGroup(where: $where, data: $data) {
+    ...AssetGroupFragment
+  }
+}
+
+mutation deleteAssetGroup($where: WhereUniqueInput!) {
+  deleteAssetGroup(where: $where) {
+    ...AssetGroupFragment
+  }
+}

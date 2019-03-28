@@ -341,3 +341,88 @@ fragment LedgerPostingFragment on LedgerPosting {
   isArchived
   isDeleted
 }
+
+fragment AssetGroupFragment on AssetGroup {
+  id
+  name
+  depreciationType
+  usefulLife
+  company {
+    ...CompanyFragment
+  }
+  isArchived
+  isDeleted
+}
+
+fragment AssetFragment on Asset {
+  id
+  name
+  assetGroup {
+    ...AssetGroupFragment
+  }
+  dateOfAquisition
+  aquisitionPrice
+  netBookValue
+  depreciation
+  salvageValue
+  company {
+    ...CompanyFragment
+  }
+  isArchived
+  isDeleted
+}
+
+fragment BankTransactionFragment on BankTransaction {
+  id
+  transactionDate
+  amount
+  description
+  company {
+    ...CompanyShortFragment
+  }
+  isArchived
+  isDeleted
+}
+
+fragment PbsOrganisationFragment on PbsOrganisation {
+  id
+  code
+  title
+  street
+  city
+  stateAddress
+  postcode
+  phone
+  effectiveFrom
+  effectiveTo
+  isArchived
+  isDeleted
+}
+
+fragment PbsTPPFragment on PbsTPP {
+  id
+  snomedCode
+  clinicalPreferredTerm
+  packSize
+  brandName
+  exManufacturerPrice
+  pricingModel
+  mpp_id
+  organisation_id
+  effectiveFrom
+  effectiveTo
+  isArchived
+  isDeleted
+}
+
+fragment InventoryFragment on Inventory {
+  id
+  name
+  inventoryModel
+  uom
+  company {
+    ...CompanyFragment
+  }
+  isArchived
+  isDeleted
+}
