@@ -1,0 +1,63 @@
+#import "./commonFragments.gql"
+
+query pbsOrganisations(
+  $where: PbsOrganisationWhereInput
+  $orderBy: PbsOrganisationOrderByInput
+  $skip: Int
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
+) {
+  pbsOrganisations(
+    where: $where
+    orderBy: $orderBy
+    skip: $skip
+    after: $after
+    before: $before
+    first: $first
+    last: $last
+  ) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...PbsOrganisationFragment
+      }
+    }
+    aggregate {
+      count
+    }
+  }
+}
+
+query pbsOrganisation($where: WhereUniqueInput!) {
+  pbsOrganisation(where: $where) {
+    ...PbsOrganisationFragment
+  }
+}
+
+# Create PbsOrganisation
+mutation createPbsOrganisation($data: kPbsOrganisationCreateInput!) {
+  createPbsOrganisation(data: $data) {
+    ...PbsOrganisationFragment
+  }
+}
+
+# Update PbsOrganisation
+mutation updatePbsOrganisation(
+  $where: WhereUniqueInput!
+  $data: kPbsOrganisationUpdateInput!
+) {
+  updatePbsOrganisation(where: $where, data: $data) {
+    ...PbsOrganisationFragment
+  }
+}
+
+# Delete PbsOrganisation
+mutation deletePbsOrganisation($where: WhereUniqueInput!) {
+  deletePbsOrganisation(where: $where) {
+    ...PbsOrganisationFragment
+  }
+}

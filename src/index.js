@@ -9,7 +9,11 @@ export {
   TimesheetsService,
   MainAccountService,
   LedgerPostingService,
-  LedgerTransactionService
+  LedgerTransactionService,
+  BankTransaction,
+  Inventory,
+  PBSOrganisation,
+  PbsTPP
 } from "./services";
 
 // hocs
@@ -117,3 +121,35 @@ export {
   withUpdateAssetGroup,
   withDeleteAssetGroup
 } from "./hoc/assetGroup";
+
+export {
+  withBankTransaction,
+  withBankTransactions,
+  withCreateBankTransaction,
+  withUpdateBankTransaction,
+  withDeleteBankTransaction
+} from "./hoc/bankTransaction"
+
+export {
+  withPBSOrganisation,
+  withPBSOrganisations,
+  withCreatePBSOrganisation,
+  withDeletePBSOrganisation,
+  withUpdatePBSOrganisation
+} from "./hoc/pbsOrganisation"
+
+export {
+  withPbsTPP,
+  withPbsTPPs,
+  withCreatePbsTPP,
+  withUpdatePbsTPP,
+  withDeletePbsTPP
+} from "./hoc/pbsTPP"
+
+export {
+  withInventory,
+  withInventories,
+  withCreateInventory,
+  withUpdateInventory,
+  withDeleteInventory
+} from "./hoc/inventory"

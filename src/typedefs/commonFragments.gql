@@ -371,3 +371,58 @@ fragment AssetFragment on Asset {
   isArchived
   isDeleted
 }
+
+fragment BankTransactionFragment on BankTransaction {
+  id
+  transactionDate
+  amount
+  description
+  company {
+    ...CompanyShortFragment
+  }
+  isArchived
+  isDeleted
+}
+
+fragment PbsOrganisationFragment on PbsOrganisation {
+  id
+  code
+  title
+  street
+  city
+  stateAddress
+  postcode
+  phone
+  effectiveFrom
+  effectiveTo
+  isArchived
+  isDeleted
+}
+
+fragment PbsTPPFragment on PbsTPP {
+  id
+  snomedCode
+  clinicalPreferredTerm
+  packSize
+  brandName
+  exManufacturerPrice
+  pricingModel
+  mpp_id
+  organisation_id
+  effectiveFrom
+  effectiveTo
+  isArchived
+  isDeleted
+}
+
+fragment InventoryFragment on Inventory {
+  id
+  name
+  inventoryModel
+  uom
+  company {
+    ...CompanyFragment
+  }
+  isArchived
+  isDeleted
+}
