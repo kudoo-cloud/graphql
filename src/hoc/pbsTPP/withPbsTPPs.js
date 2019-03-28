@@ -1,4 +1,4 @@
-import * as pbsTPPQuery from "typedefs/pbsOrganisation.gql";
+import * as pbsTPPQuery from "typedefs/pbsTPP.gql";
 import withPaginationQuery from "../withPaginationQuery";
 
 export default (config, responseFun) => {
