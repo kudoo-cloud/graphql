@@ -13,7 +13,6 @@ class Inventory {
     );
   }
   static async getInventory(id, userToken, companyToken) {
-    console.log("id", id);
     graphqlRequest.userToken = userToken;
     graphqlRequest.companyToken = companyToken;
     return await graphqlRequest

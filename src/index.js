@@ -10,10 +10,11 @@ export {
   MainAccountService,
   LedgerPostingService,
   LedgerTransactionService,
-  BankTransaction,
-  Inventory,
-  PBSOrganisation,
-  PbsTPP
+  BankTransactionService,
+  InventoryService,
+  PBSOrganisationService,
+  PbsTPPService,
+  WareHouseService,
 } from "./services";
 
 // hocs
@@ -153,3 +154,11 @@ export {
   withUpdateInventory,
   withDeleteInventory
 } from "./hoc/inventory"
+
+export {
+  withWareHouse,
+  withWareHouses,
+  withCreateWareHouse,
+  withUpdateWareHouse,
+  withDeleteWareHouse
+} from "./hoc/wareHouse"

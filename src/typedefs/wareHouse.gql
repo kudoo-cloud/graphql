@@ -1,0 +1,63 @@
+#import "./commonFragments.gql"
+
+query wareHouses(
+  $where: WareHouseWhereInput
+  $orderBy: WareHouseOrderByInput
+  $skip: Int
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
+) {
+  wareHouses(
+    where: $where
+    orderBy: $orderBy
+    skip: $skip
+    after: $after
+    before: $before
+    first: $first
+    last: $last
+  ) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...WareHouseFragment
+      }
+    }
+    aggregate {
+      count
+    }
+  }
+}
+
+query wareHouse($where: WhereUniqueInput!) {
+  wareHouse(where: $where) {
+    ...WareHouseFragment
+  }
+}
+
+# Create WareHouse
+mutation createWareHouse($data: kWareHouseCreateInput!) {
+  createWareHouse(data: $data) {
+    ...WareHouseFragment
+  }
+}
+
+# Update WareHouse
+mutation updateWareHouse(
+  $where: WhereUniqueInput!
+  $data: kWareHouseUpdateInput!
+) {
+  updateWareHouse(where: $where, data: $data) {
+    ...WareHouseFragment
+  }
+}
+
+# Delete WareHouse
+mutation deleteWareHouse($where: WhereUniqueInput!) {
+  deleteWareHouse(where: $where) {
+    ...WareHouseFragment
+  }
+}

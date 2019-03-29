@@ -12,5 +12,6 @@ export { default as LedgerPostingService } from "./LedgerPosting";
 export { default as LedgerTransactionService } from "./LedgerTransaction";
 export { default as PBSOrganisationService } from "./PBSOrganisation";
 export { default as PbsTPPService } from "./PbsTPP";
+export { default as WareHouseService } from "./WareHouse"
 
 export default GraphQLRequest;

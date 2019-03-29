@@ -426,3 +426,13 @@ fragment InventoryFragment on Inventory {
   isArchived
   isDeleted
 }
+
+fragment WareHouseFragment on WareHouse {
+  id
+  name
+  company {
+    ...CompanyFragment
+  }
+  isArchived
+  isDeleted
+}
