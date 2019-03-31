@@ -15,7 +15,7 @@ query assetGroups(
 	$first: Int
 	$last: Int
 ) {
-  assets(
+  assetGroups(
     where: $where
     orderBy: $orderBy
     skip: $skip
