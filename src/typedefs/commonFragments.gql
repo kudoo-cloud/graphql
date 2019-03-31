@@ -342,6 +342,20 @@ fragment LedgerPostingFragment on LedgerPosting {
   isDeleted
 }
 
+fragment LedgerJournalFragment on LedgerJournal {
+  id
+  total
+  description
+  currency
+  includeConsTax
+  posted
+  company {
+    ...CompanyFragment
+  }
+  isArchived
+  isDeleted
+}
+
 fragment AssetGroupFragment on AssetGroup {
   id
   name

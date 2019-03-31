@@ -14,7 +14,7 @@ export {
   InventoryService,
   PBSOrganisationService,
   PbsTPPService,
-  WareHouseService,
+  WareHouseService
 } from "./services";
 
 // hocs
@@ -108,6 +108,14 @@ export {
 } from "./hoc/ledgerPosting";
 
 export {
+  withLedgerJournal,
+  withLedgerJournals,
+  withCreateLedgerJournal,
+  withUpdateLedgerJournal,
+  withDeleteLedgerJournal
+} from "./hoc/ledgerJournal";
+
+export {
   withAsset,
   withAssets,
   withCreateAsset,
@@ -129,7 +137,7 @@ export {
   withCreateBankTransaction,
   withUpdateBankTransaction,
   withDeleteBankTransaction
-} from "./hoc/bankTransaction"
+} from "./hoc/bankTransaction";
 
 export {
   withPBSOrganisation,
@@ -137,7 +145,7 @@ export {
   withCreatePBSOrganisation,
   withDeletePBSOrganisation,
   withUpdatePBSOrganisation
-} from "./hoc/pbsOrganisation"
+} from "./hoc/pbsOrganisation";
 
 export {
   withPbsTPP,
@@ -145,7 +153,7 @@ export {
   withCreatePbsTPP,
   withUpdatePbsTPP,
   withDeletePbsTPP
-} from "./hoc/pbsTPP"
+} from "./hoc/pbsTPP";
 
 export {
   withInventory,
@@ -153,7 +161,7 @@ export {
   withCreateInventory,
   withUpdateInventory,
   withDeleteInventory
-} from "./hoc/inventory"
+} from "./hoc/inventory";
 
 export {
   withWareHouse,
@@ -161,4 +169,4 @@ export {
   withCreateWareHouse,
   withUpdateWareHouse,
   withDeleteWareHouse
-} from "./hoc/wareHouse"
+} from "./hoc/wareHouse";
