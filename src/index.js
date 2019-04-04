@@ -14,7 +14,9 @@ export {
   InventoryService,
   PBSOrganisationService,
   PbsTPPService,
-  WareHouseService
+  WareHouseService,
+  SalesOrderService,
+  SalesOrderLineService
 } from "./services";
 
 // hocs
@@ -170,3 +172,19 @@ export {
   withUpdateWareHouse,
   withDeleteWareHouse
 } from "./hoc/wareHouse";
+
+export {
+  withSalesOrder,
+  withSalesOrders,
+  withCreateSalesOrder,
+  withUpdateSalesOrder,
+  withDeleteSalesOrder
+} from "./hoc/salesOrder"
+
+export {
+  withSalesOrderLine,
+  withSalesOrderLines,
+  withCreateSalesOrderLine,
+  withUpdateSalesOrderLine,
+  withDeleteSalesOrderLine
+} from "./hoc/salesOrderLine"

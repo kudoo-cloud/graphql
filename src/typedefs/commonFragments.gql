@@ -450,3 +450,30 @@ fragment WareHouseFragment on WareHouse {
   isArchived
   isDeleted
 }
+
+fragment SalesOrderFragment on SalesOrder {
+  id
+  customer {
+    ...CustomerFragment
+  }
+  transactionDate
+  currency
+  company {
+    ...CompanyFragment
+  }
+  isArchived
+  isDeleted
+}
+
+fragment SalesOrderLineFragment on SalesOrderLine {
+  id
+  salesOrder {
+    ...SalesOrderFragment
+  }
+  inventory {
+    ...InventoryFragment
+  }
+  qty
+  isArchived
+  isDeleted
+}

@@ -1,0 +1,62 @@
+#import "./commonFragments.gql"
+query salesOrderLines(
+  $where: SalesOrderLineWhereInput
+  $orderBy: SalesOrderLineOrderByInput
+  $skip: Int
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
+) {
+  salesOrderLines(
+    where: $where
+    orderBy: $orderBy
+    skip: $skip
+    after: $after
+    before: $before
+    first: $first
+    last: $last
+  ) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...SalesOrderLineFragment
+      }
+    }
+    aggregate {
+      count
+    }
+  }
+}
+
+query salesOrderLine($where: WhereUniqueInput!) {
+  salesOrderLine(where: $where) {
+    ...SalesOrderLineFragment
+  }
+}
+
+# Create SalesOrderLine
+mutation createSalesOrderLine($data: kSalesOrderLineCreateInput!) {
+  createSalesOrderLine(data: $data) {
+    ...SalesOrderLineFragment
+  }
+}
+
+# Update SalesOrderLine
+mutation updateSalesOrderLine(
+  $where: WhereUniqueInput!
+  $data: kSalesOrderLineUpdateInput!
+) {
+  updateSalesOrderLine(where: $where, data: $data) {
+    ...SalesOrderLineFragment
+  }
+}
+
+# Delete SalesOrderLine
+mutation deleteSalesOrderLine($where: WhereUniqueInput!) {
+  deleteSalesOrderLine(where: $where) {
+    ...SalesOrderLineFragment
+  }
+}
