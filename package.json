@@ -1,49 +1,53 @@
 {
-  "name": "@kudoo/graphql",
-  "version": "2.0.9",
-  "description": "Graphql services and typedefs for Kudoo",
-  "main": "./build/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "copy-typedefs": "ncp ./src/typedefs ./build/typedefs",
-    "build": "babel src --out-dir ./build && npm run copy-typedefs",
-    "prepublishOnly": "npm run build",
-    "watch": "watch \"npm run build\" ./src"
-  },
-  "author": "Kudoo Cloud Pty Ltd",
-  "license": "MIT",
-  "dependencies": {
-    "@babel/runtime": "^7.3.1",
-    "apollo-link": "^1.2.3",
-    "apollo-link-http": "1.5.7",
-    "cross-fetch": "^2.2.2",
-    "es6-promise": "^4.2.5",
-    "exports-loader": "^0.7.0",
-    "graphql": "14.0.0",
-    "graphql-tag": "^2.10.0",
-    "imports-loader": "^0.8.0",
-    "lodash": "^4.17.11",
-    "ncp": "^2.0.0",
-    "react": "16.5.2",
-    "react-apollo": "2.0.4",
-    "react-dom": "16.5.2",
-    "recompose": "^0.30.0",
-    "watch": "^1.0.2"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/node": "^7.0.0",
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
-    "@babel/plugin-transform-async-to-generator": "^7.1.0",
-    "@babel/plugin-transform-runtime": "^7.2.0",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/preset-flow": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
-    "babel-plugin-import-graphql": "^2.6.2",
-    "babel-plugin-module-resolver": "^3.1.1"
-  },
-  "peerDependencies": {
-    "react": "*"
-  }
+	"name": "@kudoo/graphql",
+	"version": "2.0.9",
+	"description": "Graphql services and typedefs for Kudoo",
+	"main": "./build/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"copy-typedefs": "ncp ./src/typedefs ./build/typedefs",
+		"build": "babel src --out-dir ./build && npm run copy-typedefs",
+		"prepublishOnly": "npm run build",
+		"watch": "watch \"npm run build\" ./src",
+		"version": "auto-changelog -p && git add CHANGELOG.md",
+		"release": "np --yolo --no-yarn"
+	},
+	"author": "Kudoo Cloud Pty Ltd",
+	"license": "MIT",
+	"dependencies": {
+		"@babel/runtime": "^7.3.1",
+		"apollo-link": "^1.2.3",
+		"apollo-link-http": "1.5.7",
+		"cross-fetch": "^2.2.2",
+		"es6-promise": "^4.2.5",
+		"exports-loader": "^0.7.0",
+		"graphql": "14.0.0",
+		"graphql-tag": "^2.10.0",
+		"imports-loader": "^0.8.0",
+		"lodash": "^4.17.11",
+		"ncp": "^2.0.0",
+		"react": "16.5.2",
+		"react-apollo": "2.0.4",
+		"react-dom": "16.5.2",
+		"recompose": "^0.30.0",
+		"watch": "^1.0.2"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.1.2",
+		"@babel/core": "^7.1.2",
+		"@babel/node": "^7.0.0",
+		"@babel/plugin-proposal-class-properties": "^7.1.0",
+		"@babel/plugin-transform-async-to-generator": "^7.1.0",
+		"@babel/plugin-transform-runtime": "^7.2.0",
+		"@babel/preset-env": "^7.1.0",
+		"@babel/preset-flow": "^7.0.0",
+		"@babel/preset-react": "^7.0.0",
+		"auto-changelog": "^1.12.0",
+		"babel-plugin-import-graphql": "^2.6.2",
+		"babel-plugin-module-resolver": "^3.1.1",
+		"np": "^4.0.2"
+	},
+	"peerDependencies": {
+		"react": "*"
+	}
 }
