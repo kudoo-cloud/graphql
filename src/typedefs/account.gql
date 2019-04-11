@@ -8,6 +8,7 @@ mutation register(
   $lastName: String!
   $password: String!
   $passwordRepeat: String!
+  $baseURL: String!
 ) {
   register(
     email: $email
@@ -15,6 +16,7 @@ mutation register(
     lastName: $lastName
     password: $password
     passwordRepeat: $passwordRepeat
+    baseURL: $baseURL
   ) {
     success
   }
@@ -41,8 +43,8 @@ mutation login($email: String!, $password: String!) {
 }
 
 # remember
-mutation remember($email: String!) {
-  remember(email: $email) {
+mutation remember($email: String!, $baseURL: String!) {
+  remember(email: $email, baseURL: $baseURL) {
     success
   }
 }

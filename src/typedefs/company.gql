@@ -27,15 +27,15 @@ mutation updateCompany($data: kCompanyUpdateInput!, $where: WhereUniqueInput!) {
 }
 
 # Invite
-mutation invite($email: String!, $role: CompanyMemberRole!) {
-  invite(email: $email, role: $role) {
+mutation invite($email: String!, $role: CompanyMemberRole!, $baseURL: String!) {
+  invite(email: $email, role: $role, baseURL: $baseURL) {
     success
   }
 }
 
 # resendInvite
-mutation resendInvite($email: String!, $role: CompanyMemberRole!, $companyMemberId: ID!) {
-  resendInvite(email: $email, role: $role, companyMemberId: $companyMemberId) {
+mutation resendInvite($email: String!, $role: CompanyMemberRole!, $companyMemberId: ID!, $baseURL: String!) {
+  resendInvite(email: $email, role: $role, companyMemberId: $companyMemberId, baseURL: $baseURL) {
     success
   }
 }
