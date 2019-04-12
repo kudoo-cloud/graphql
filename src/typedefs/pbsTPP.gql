@@ -2,7 +2,7 @@
 
 query pbsTpps(
   $where: PbsTPPWhereInput
-  $orderBy: PbsTPPWhereInput
+  $orderBy: PbsTPPOrderByInput
   $skip: Int
   $after: String
   $before: String

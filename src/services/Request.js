@@ -78,7 +78,8 @@ class GraphQLRequest {
         const nodes = edges.map(({ node }) => node);
         return {
           nodes,
-          pageInfo: get(res, `data.${name}.pageInfo`, {})
+					pageInfo: get(res, `data.${name}.pageInfo`, {}),
+					aggregate: get(res, `data.${name}.aggregate`),
         };
       }
     } catch (error) {
