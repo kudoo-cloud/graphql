@@ -423,10 +423,9 @@ fragment PbsTPPFragment on PbsTPP {
   # Temporary comment it out
   # pricingModel
   mpp_id
-  # Temporary comment it out
-  # organisation_id {
-  #   ...PbsOrganisationFragment
-  # }
+  organisation_id {
+    ...PbsOrganisationFragment
+  }
   effectiveFrom
   effectiveTo
   isArchived
