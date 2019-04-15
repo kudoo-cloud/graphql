@@ -1,0 +1,63 @@
+#import "./commonFragments.gql"
+
+query suppliers(
+  $where: SupplierWhereInput
+  $orderBy: SupplierOrderByInput
+  $skip: Int
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
+) {
+  suppliers(
+    where: $where
+    orderBy: $orderBy
+    skip: $skip
+    after: $after
+    before: $before
+    first: $first
+    last: $last
+  ) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...SupplierFragment
+      }
+    }
+    aggregate {
+      count
+    }
+  }
+}
+
+query supplier($where: WhereUniqueInput!) {
+  supplier(where: $where) {
+    ...SupplierFragment
+  }
+}
+
+# Create Supplier
+mutation createSupplier($data: kSupplierCreateInput!) {
+  createSupplier(data: $data) {
+    ...SupplierFragment
+  }
+}
+
+# Update Supplier
+mutation updateSupplier(
+  $where: WhereUniqueInput!
+  $data: kSupplierUpdateInput!
+) {
+  updateSupplier(where: $where, data: $data) {
+    ...SupplierFragment
+  }
+}
+
+# Delete Supplier
+mutation deleteSupplier($where: WhereUniqueInput!) {
+  deleteSupplier(where: $where) {
+    ...SupplierFragment
+  }
+}

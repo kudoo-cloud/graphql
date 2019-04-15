@@ -480,3 +480,19 @@ fragment SalesOrderLineFragment on SalesOrderLine {
   isArchived
   isDeleted
 }
+
+fragment SupplierFragment on Supplier {
+  id
+  name
+  address {
+    ...AddressFragment
+  }
+  termsOfPayment
+  bankAccount
+  emailAddressForRemittance
+  company{
+   ...CompanyFragment
+  }
+  isArchived
+  isDeleted
+}

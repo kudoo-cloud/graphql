@@ -188,3 +188,11 @@ export {
   withUpdateSalesOrderLine,
   withDeleteSalesOrderLine
 } from "./hoc/salesOrderLine"
+
+export {
+  withSupplier,
+  withSuppliers,
+  withCreateSupplier,
+  withUpdateSupplier,
+  withDeleteSupplier
+} from "./hoc/supplier"
