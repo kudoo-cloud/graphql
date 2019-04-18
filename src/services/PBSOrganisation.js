@@ -19,6 +19,26 @@ class PBSOrganisation {
       .getNode("Organisation", PBSOrganisationQuery.pbsOrganisation, id)
       .then(pbsOrganisationObj => pbsOrganisationObj)
       .catch(error => error);
+	}
+	
+	static async getAllPbsOrganisations({
+    where,
+    orderBy,
+    skip,
+    after,
+    before,
+    first,
+    last
+  } = {}) {
+    return await graphqlRequest.getAll("pbsOrganisations", PBSOrganisationQuery.pbsOrganisations, {
+      where,
+      orderBy,
+      skip,
+      after,
+      before,
+      first,
+      last
+    });
   }
 }
 
