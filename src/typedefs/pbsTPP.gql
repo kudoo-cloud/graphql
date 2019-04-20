@@ -1,7 +1,7 @@
 #import "./commonFragments.gql"
 
 query pbsTpps(
-  $where: PbsTPPWhereInput
+  $where: kPbsTPPWhereInput
   $orderBy: PbsTPPOrderByInput
   $skip: Int
   $after: String
