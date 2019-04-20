@@ -5,8 +5,8 @@ export default (config, responseFun) => {
   return withPaginationQuery({
     config,
     responseFun,
-    defaultPropName: "pbsTPPs",
-    query: pbsTPPQuery.pbsTPPs,
-    queryName: "pbsTPPs"
+    defaultPropName: "pbsTpps",
+    query: pbsTPPQuery.pbsTpps,
+    queryName: "pbsTpps"
   });
 };
