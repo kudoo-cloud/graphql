@@ -1,7 +1,7 @@
 #import "./commonFragments.gql"
 
 query pbsOrganisations(
-  $where: PbsOrganisationWhereInput
+  $where: kPbsOrganisationWhereInput
   $orderBy: PbsOrganisationOrderByInput
   $skip: Int
   $after: String
