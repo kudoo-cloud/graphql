@@ -1,0 +1,63 @@
+#import "./commonFragments.gql"
+
+query poReceipts(
+  $where: PoReceiptWhereInput
+  $orderBy: PoReceiptOrderByInput
+  $skip: Int
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
+) {
+  poReceipts(
+    where: $where
+    orderBy: $orderBy
+    skip: $skip
+    after: $after
+    before: $before
+    first: $first
+    last: $last
+  ) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...PoReceiptFragment
+      }
+    }
+    aggregate {
+      count
+    }
+  }
+}
+
+query poReceipt($where: WhereUniqueInput!) {
+  poReceipt(where: $where) {
+    ...PoReceiptFragment
+  }
+}
+
+# Create PoReceipt
+mutation createPoReceipt($data: kPoReceiptCreateInput!) {
+  createPoReceipt(data: $data) {
+    ...PoReceiptFragment
+  }
+}
+
+# Update PoReceipt
+mutation updatePoReceipt(
+  $where: WhereUniqueInput!
+  $data: kPoReceiptUpdateInput!
+) {
+  updatePoReceipt(where: $where, data: $data) {
+    ...PoReceiptFragment
+  }
+}
+
+# Delete PoReceipt
+mutation deletePoReceipt($where: WhereUniqueInput!) {
+  deletePoReceipt(where: $where) {
+    ...PoReceiptFragment
+  }
+}

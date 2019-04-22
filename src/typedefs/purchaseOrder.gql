@@ -1,0 +1,63 @@
+#import "./commonFragments.gql"
+
+query purchaseOrders(
+  $where: PurchaseOrderWhereInput
+  $orderBy: PurchaseOrderOrderByInput
+  $skip: Int
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
+) {
+  purchaseOrders(
+    where: $where
+    orderBy: $orderBy
+    skip: $skip
+    after: $after
+    before: $before
+    first: $first
+    last: $last
+  ) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...PurchaseOrderFragment
+      }
+    }
+    aggregate {
+      count
+    }
+  }
+}
+
+query purchaseOrder($where: WhereUniqueInput!) {
+  purchaseOrder(where: $where) {
+    ...PurchaseOrderFragment
+  }
+}
+
+# Create PurchaseOrder
+mutation createPurchaseOrder($data: kPurchaseOrderCreateInput!) {
+  createPurchaseOrder(data: $data) {
+    ...PurchaseOrderFragment
+  }
+}
+
+# Update PurchaseOrder
+mutation updatePurchaseOrder(
+  $where: WhereUniqueInput!
+  $data: kPurchaseOrderUpdateInput!
+) {
+  updatePurchaseOrder(where: $where, data: $data) {
+    ...PurchaseOrderFragment
+  }
+}
+
+# Delete PurchaseOrder
+mutation deletePurchaseOrder($where: WhereUniqueInput!) {
+  deletePurchaseOrder(where: $where) {
+    ...PurchaseOrderFragment
+  }
+}

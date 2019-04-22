@@ -179,7 +179,7 @@ export {
   withCreateSalesOrder,
   withUpdateSalesOrder,
   withDeleteSalesOrder
-} from "./hoc/salesOrder"
+} from "./hoc/salesOrder";
 
 export {
   withSalesOrderLine,
@@ -187,7 +187,7 @@ export {
   withCreateSalesOrderLine,
   withUpdateSalesOrderLine,
   withDeleteSalesOrderLine
-} from "./hoc/salesOrderLine"
+} from "./hoc/salesOrderLine";
 
 export {
   withSupplier,
@@ -195,4 +195,28 @@ export {
   withCreateSupplier,
   withUpdateSupplier,
   withDeleteSupplier
-} from "./hoc/supplier"
+} from "./hoc/supplier";
+
+export {
+  withPurchaseOrder,
+  withPurchaseOrders,
+  withCreatePurchaseOrder,
+  withUpdatePurchaseOrder,
+  withDeletePurchaseOrder
+} from "./hoc/purchaseOrder";
+
+export {
+  withPoReceipt,
+  withPoReceipts,
+  withCreatePoReceipt,
+  withUpdatePoReceipt,
+  withDeletePoReceipt
+} from "./hoc/poReceipt";
+
+export {
+  withPurchaseOrderLine,
+  withPurchaseOrderLines,
+  withCreatePurchaseOrderLine,
+  withUpdatePurchaseOrderLine,
+  withDeletePurchaseOrderLine
+} from "./hoc/purchaseOrderLine"

@@ -496,3 +496,50 @@ fragment SupplierFragment on Supplier {
   isArchived
   isDeleted
 }
+
+fragment PurchaseOrderFragment on PurchaseOrder {
+  id
+  pbsOrganisation
+  date
+  orderer {
+    ...UserFragment
+  }
+  status
+  supplier {
+    ...SupplierFragment
+  }
+  isArchived
+  isDeleted
+}
+
+fragment PoReceiptFragment on PoReceipt {
+  id
+  receiptNumber
+  purchaseOrder {
+    ...PurchaseOrderFragment
+  }
+  receiptDate
+  isArchived
+  isDeleted
+}
+
+fragment PurchaseOrderLineFragment on PurchaseOrderLine {
+  id
+  item {
+    ...InventoryFragment
+  }
+  qty
+  unit
+  unitPrice
+  site {
+    ...WareHouseFragment
+  }
+  purchaseOrder {
+    ...PurchaseOrderFragment
+  }
+  poReceipt {
+    ...PoReceiptFragment
+  }
+  isArchived
+  isDeleted
+}
