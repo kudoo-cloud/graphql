@@ -508,6 +508,9 @@ fragment PurchaseOrderFragment on PurchaseOrder {
   supplier {
     ...SupplierFragment
   }
+  company {
+    ...CompanyFragment
+  }
   isPbsPO
   isArchived
   isDeleted
