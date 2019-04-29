@@ -508,6 +508,7 @@ fragment PurchaseOrderFragment on PurchaseOrder {
   supplier {
     ...SupplierFragment
   }
+  isPbsPO
   isArchived
   isDeleted
 }
@@ -528,6 +529,7 @@ fragment PurchaseOrderLineFragment on PurchaseOrderLine {
   item {
     ...InventoryFragment
   }
+  pbsDrug
   qty
   unit
   unitPrice
