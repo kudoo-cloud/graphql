@@ -1,0 +1,57 @@
+#import "./commonFragments.gql"
+
+query inventoryOnHand($where: WhereUniqueInput!) {
+  inventoryOnHand(where: $where) {
+    ...InventoryOnHandFragment
+  }
+}
+
+query inventoryOnHands(
+  $where: InventoryOnHandWhereInput
+  $orderBy: InventoryOnHandOrderByInput
+  $skip: Int
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
+) {
+  inventoryOnHands(
+    where: $where
+    orderBy: $orderBy
+    skip: $skip
+    after: $after
+    before: $before
+    first: $first
+    last: $last
+  ) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...InventoryOnHandFragment
+      }
+    }
+    aggregate {
+      count
+    }
+  }
+}
+
+mutation createInventoryOnHand($data: kInventoryOnHandCreateInput!) {
+  createInventoryOnHand(data: $data) {
+    ...InventoryOnHandFragment
+  }
+}
+
+mutation updateInventoryOnHand($where: WhereUniqueInput!, $data: kInventoryOnHandUpdateInput!) {
+  updateInventoryOnHand(where: $where, data: $data) {
+    ...InventoryOnHandFragment
+  }
+}
+
+mutation deleteInventoryOnHand($where: WhereUniqueInput!) {
+  deleteInventoryOnHand(where: $where) {
+    ...InventoryOnHandFragment
+  }
+}

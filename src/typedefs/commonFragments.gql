@@ -477,6 +477,7 @@ fragment SalesOrderLineFragment on SalesOrderLine {
     ...InventoryFragment
   }
   qty
+  unitPrice
   isArchived
   isDeleted
 }
@@ -511,6 +512,10 @@ fragment PurchaseOrderFragment on PurchaseOrder {
   company {
     ...CompanyFragment
   }
+  poNumber
+  preview {
+    ...AttachmentFragment
+  }
   isPbsPO
   isArchived
   isDeleted
@@ -544,6 +549,41 @@ fragment PurchaseOrderLineFragment on PurchaseOrderLine {
   }
   poReceipt {
     ...PoReceiptFragment
+  }
+  isArchived
+  isDeleted
+}
+
+fragment ApInvoiceFragment on ApInvoice {
+  id
+  purchaseOrder {
+    ...PurchaseOrderFragment
+  }
+  status
+  invoiceNumber
+  company {
+    ...CompanyFragment
+  }
+  isArchived
+  isDeleted
+}
+
+fragment InventoryOnHandFragment on InventoryOnHand{
+  id
+  date
+  item {
+    ...InventoryFragment
+  }
+  pbsDrug
+  onHandQty
+  purchaseOrder {
+    ...PurchaseOrderFragment
+  }
+  warehouse {
+    ...WareHouseFragment
+  }
+  company {
+    ...CompanyFragment
   }
   isArchived
   isDeleted

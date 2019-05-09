@@ -61,3 +61,10 @@ mutation deletePurchaseOrder($where: WhereUniqueInput!) {
     ...PurchaseOrderFragment
   }
 }
+
+# Purchase Order Mail Send
+mutation sendPurchaseOrderMail($data: PurchaseOrderMailInput) {
+  sendPurchaseOrderMail(data: $data) {
+    success
+  }
+}

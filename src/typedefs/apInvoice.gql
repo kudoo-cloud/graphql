@@ -1,0 +1,57 @@
+#import "./commonFragments.gql"
+
+query apInvoice($where: WhereUniqueInput!) {
+  apInvoice(where: $where) {
+    ...ApInvoiceFragment
+  }
+}
+
+query apInvoices(
+  $where: ApInvoiceWhereInput
+  $orderBy: ApInvoiceOrderByInput
+  $skip: Int
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
+) {
+  apInvoices(
+    where: $where
+    orderBy: $orderBy
+    skip: $skip
+    after: $after
+    before: $before
+    first: $first
+    last: $last
+  ) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...ApInvoiceFragment
+      }
+    }
+    aggregate {
+      count
+    }
+  }
+}
+
+mutation createApInvoice($data: kApInvoiceCreateInput!) {
+  createApInvoice(data: $data) {
+    ...ApInvoiceFragment
+  }
+}
+
+mutation updateApInvoice($where: WhereUniqueInput!, $data: kApInvoiceUpdateInput!) {
+  updateApInvoice(where: $where, data: $data) {
+    ...ApInvoiceFragment
+  }
+}
+
+mutation deleteApInvoice($where: WhereUniqueInput!) {
+  deleteApInvoice(where: $where) {
+    ...ApInvoiceFragment
+  }
+}

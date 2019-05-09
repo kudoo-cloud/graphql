@@ -14,6 +14,7 @@ export {
   InventoryService,
   PBSOrganisationService,
   PbsTPPService,
+  PurchaseOrderService,
   WareHouseService,
   SalesOrderService,
   SalesOrderLineService
@@ -202,7 +203,8 @@ export {
   withPurchaseOrders,
   withCreatePurchaseOrder,
   withUpdatePurchaseOrder,
-  withDeletePurchaseOrder
+  withDeletePurchaseOrder,
+  withPurchaseOrderMailSend,
 } from "./hoc/purchaseOrder";
 
 export {
@@ -220,3 +222,19 @@ export {
   withUpdatePurchaseOrderLine,
   withDeletePurchaseOrderLine
 } from "./hoc/purchaseOrderLine"
+
+export {
+  withApInvoice,
+  withApInvoices,
+  withCreateApInvoice,
+  withUpdateApInvoice,
+  withDeleteApInvoice
+} from "./hoc/apInvoice"
+
+export {
+  withInventoryOnHand,
+  withInventoryOnHands,
+  withCreateInventoryOnHand,
+  withUpdateInventoryOnHand,
+  withDeleteInventoryOnHand
+} from "./hoc/inventoryOnHand"
