@@ -2,5 +2,5 @@ projectKey=graphql
 serverUrl=http://localhost:9000
 serverVersion=7.8.0.26217
 dashboardUrl=http://localhost:9000/dashboard?id=graphql
-ceTaskId=AWufw-OD0zYapwgGpubw
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AWufw-OD0zYapwgGpubw
+ceTaskId=AWufzFDc0zYapwgGpub7
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AWufzFDc0zYapwgGpub7
