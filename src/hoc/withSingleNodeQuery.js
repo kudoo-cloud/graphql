@@ -1,6 +1,5 @@
 /* @flow */
 import React from "react";
-import PropTypes from "prop-types";
 import get from "lodash/get";
 import { graphql, withApollo } from "react-apollo";
 import { compose, withProps } from "recompose";
