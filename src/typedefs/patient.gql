@@ -1,0 +1,63 @@
+#import "./commonFragments.gql"
+
+query patients(
+  $where: PatientWhereInput
+  $orderBy: PatientOrderByInput
+  $skip: Int
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
+) {
+  patients(
+    where: $where
+    orderBy: $orderBy
+    skip: $skip
+    after: $after
+    before: $before
+    first: $first
+    last: $last
+  ) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...PatientFragment
+      }
+    }
+    aggregate {
+      count
+    }
+  }
+}
+
+query patient($where: WhereUniqueInput) {
+  patient(where: $where) {
+    ...PatientFragment
+  }
+}
+
+# Create Patient
+mutation createPatient($data: kPatientCreateInput!) {
+  createPatient(data: $data) {
+    ...PatientFragment
+  }
+}
+
+# Update Patient
+mutation updatePatient(
+  $where: WhereUniqueInput!
+  $data: kPatientUpdateInput!
+) {
+  updatePatient(where: $where, data: $data) {
+    ...PatientFragment
+  }
+}
+
+# Delete Patient
+mutation deletePatient($where: WhereUniqueInput!) {
+  deletePatient(where: $where) {
+    ...PatientFragment
+  }
+}

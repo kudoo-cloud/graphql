@@ -141,6 +141,60 @@ fragment ServiceFragment on Service {
   totalAmount
 }
 
+fragment PatientFragment on Patient {
+  id
+  title
+  firstName
+  lastName
+  company {
+    ...CompanyShortFragment
+  }
+  address {
+    ...AddressFragment
+  }
+  dateOfBirth
+  gender
+  dvaCardType
+  aboriginalStatus
+  pensionerConcession
+  commonwealthSeniors
+  healthcareConcession
+  safetyNetConcession
+  medicareNumber
+  DVA
+  potentialDuplicate
+  oneName
+  ihi
+  ihiValidatedDate
+  noOfBirths
+  deceasedDate
+}
+
+fragment HealthcareProviderFragment on HealthcareProvider {
+  id
+  occupation
+  company {
+    ...CompanyShortFragment
+  }
+  hpii
+  firstName
+  lastName
+  dateOfBirth
+  emailAddress
+  gender
+  address {
+    ...AddressFragment
+  }
+  ahpraNumber
+}
+
+fragment BankFragment on Bank {
+  id 
+  company {
+    ...CompanyShortFragment
+  }
+}
+
 fragment CustomerFragment on Customer {
   id
   company {

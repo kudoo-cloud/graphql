@@ -1,0 +1,63 @@
+#import "./commonFragments.gql"
+
+query healthcareProviders(
+  $where: HealthcareProviderWhereInput
+  $orderBy: HealthcareProviderOrderByInput
+  $skip: Int
+  $after: String
+  $before: String
+  $first: Int
+  $last: Int
+) {
+  healthcareProviders(
+    where: $where
+    orderBy: $orderBy
+    skip: $skip
+    after: $after
+    before: $before
+    first: $first
+    last: $last
+  ) {
+    pageInfo {
+      ...PageInfoFragment
+    }
+    edges {
+      node {
+        ...HealthcareProviderFragment
+      }
+    }
+    aggregate {
+      count
+    }
+  }
+}
+
+query healthcareProvider($where: WhereUniqueInput) {
+  healthcareProvider(where: $where) {
+    ...HealthcareProviderFragment
+  }
+}
+
+# Create HealthcareProvider
+mutation createHealthcareProvider($data: kHealthcareProviderCreateInput!) {
+  createHealthcareProvider(data: $data) {
+    ...HealthcareProviderFragment
+  }
+}
+
+# Update HealthcareProvider
+mutation updateHealthcareProvider(
+  $where: WhereUniqueInput!
+  $data: kHealthcareProviderUpdateInput!
+) {
+  updateHealthcareProvider(where: $where, data: $data) {
+    ...HealthcareProviderFragment
+  }
+}
+
+# Delete HealthcareProvider
+mutation deleteHealthcareProvider($where: WhereUniqueInput!) {
+  deleteHealthcareProvider(where: $where) {
+    ...HealthcareProviderFragment
+  }
+}
