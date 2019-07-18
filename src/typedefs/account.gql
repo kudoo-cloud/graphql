@@ -26,9 +26,6 @@ mutation register(
 mutation login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
     id
-    activePlan {
-      ...PlanFragment
-    }
     contactNumber
     email
     firstName

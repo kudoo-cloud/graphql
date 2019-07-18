@@ -7,9 +7,6 @@ fragment PageInfoFragment on PageInfo {
 
 fragment UserFragment on User {
   id
-  activePlan {
-    ...PlanFragment
-  }
   contactNumber
   email
   firstName
@@ -41,8 +38,6 @@ fragment PlanFragment on Plan {
   is_active
   is_archived
   is_deleted
-  max_users
-  name
   price
 }
 
@@ -114,6 +109,9 @@ fragment CompanyFragment on Company {
   #   workingHours
   #   approvalsEnabled
   # }
+  activePlan {
+    ...PlanFragment
+  }
   websiteURL
   addresses {
     ...AddressFragment
@@ -189,7 +187,7 @@ fragment HealthcareProviderFragment on HealthcareProvider {
 }
 
 fragment BankFragment on Bank {
-  id 
+  id
   company {
     ...CompanyShortFragment
   }
@@ -545,8 +543,8 @@ fragment SupplierFragment on Supplier {
   termsOfPayment
   bankAccount
   emailAddressForRemittance
-  company{
-   ...CompanyFragment
+  company {
+    ...CompanyFragment
   }
   isArchived
   isDeleted
@@ -622,7 +620,7 @@ fragment ApInvoiceFragment on ApInvoice {
   isDeleted
 }
 
-fragment InventoryOnHandFragment on InventoryOnHand{
+fragment InventoryOnHandFragment on InventoryOnHand {
   id
   date
   item {
