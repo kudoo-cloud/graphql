@@ -17,7 +17,7 @@ export {
   PurchaseOrderService,
   WareHouseService,
   SalesOrderService,
-  SalesOrderLineService
+  SalesOrderLineService,
 } from "./services";
 
 // hocs
@@ -26,7 +26,7 @@ export {
   withRegister,
   withRememberPassword,
   withUpdateUser,
-  withResetPassword
+  withResetPassword,
 } from "./hoc/account";
 
 export {
@@ -39,7 +39,7 @@ export {
   withDeleteCompanyMember,
   withUpdateCompanyMember,
   withInviteMember,
-  withResendInvite
+  withResendInvite,
 } from "./hoc/company";
 
 export {
@@ -47,7 +47,7 @@ export {
   withServices,
   withCreateService,
   withUpdateService,
-  withDeleteService
+  withDeleteService,
 } from "./hoc/service";
 
 export {
@@ -55,7 +55,7 @@ export {
   withCustomers,
   withCreateCustomer,
   withUpdateCustomer,
-  withDeleteCustomer
+  withDeleteCustomer,
 } from "./hoc/customer";
 
 export {
@@ -63,7 +63,7 @@ export {
   withProjects,
   withCreateProject,
   withUpdateProject,
-  withDeleteProject
+  withDeleteProject,
 } from "./hoc/project";
 
 export {
@@ -73,7 +73,7 @@ export {
   withUpdateTimeSheet,
   withDeleteTimeSheet,
   withTimeSheetApprove,
-  withTimeSheetNotify
+  withTimeSheetNotify,
 } from "./hoc/timeSheet";
 
 export { withDeleteAttachment } from "./hoc/attachment";
@@ -83,7 +83,7 @@ export {
   withInvoices,
   withCreateInvoice,
   withInvoiceNotify,
-  withUpdateInvoiceStatus
+  withUpdateInvoiceStatus,
 } from "./hoc/invoice";
 
 export {
@@ -91,7 +91,7 @@ export {
   withMainAccounts,
   withCreateMainAccount,
   withUpdateMainAccount,
-  withDeleteMainAccount
+  withDeleteMainAccount,
 } from "./hoc/mainAccount";
 
 export {
@@ -99,7 +99,7 @@ export {
   withLedgerTransactions,
   withCreateLedgerTransaction,
   withUpdateLedgerTransaction,
-  withDeleteLedgerTransaction
+  withDeleteLedgerTransaction,
 } from "./hoc/ledgerTransaction";
 
 export {
@@ -107,7 +107,7 @@ export {
   withLedgerPostings,
   withCreateLedgerPosting,
   withUpdateLedgerPosting,
-  withDeleteLedgerPosting
+  withDeleteLedgerPosting,
 } from "./hoc/ledgerPosting";
 
 export {
@@ -115,7 +115,7 @@ export {
   withLedgerJournals,
   withCreateLedgerJournal,
   withUpdateLedgerJournal,
-  withDeleteLedgerJournal
+  withDeleteLedgerJournal,
 } from "./hoc/ledgerJournal";
 
 export {
@@ -123,7 +123,7 @@ export {
   withAssets,
   withCreateAsset,
   withUpdateAsset,
-  withDeleteAsset
+  withDeleteAsset,
 } from "./hoc/asset";
 
 export {
@@ -131,7 +131,7 @@ export {
   withAssetGroups,
   withCreateAssetGroup,
   withUpdateAssetGroup,
-  withDeleteAssetGroup
+  withDeleteAssetGroup,
 } from "./hoc/assetGroup";
 
 export {
@@ -139,7 +139,7 @@ export {
   withBankTransactions,
   withCreateBankTransaction,
   withUpdateBankTransaction,
-  withDeleteBankTransaction
+  withDeleteBankTransaction,
 } from "./hoc/bankTransaction";
 
 export {
@@ -147,7 +147,7 @@ export {
   withPBSOrganisations,
   withCreatePBSOrganisation,
   withDeletePBSOrganisation,
-  withUpdatePBSOrganisation
+  withUpdatePBSOrganisation,
 } from "./hoc/pbsOrganisation";
 
 export {
@@ -155,7 +155,7 @@ export {
   withPbsTPPs,
   withCreatePbsTPP,
   withUpdatePbsTPP,
-  withDeletePbsTPP
+  withDeletePbsTPP,
 } from "./hoc/pbsTPP";
 
 export {
@@ -163,7 +163,7 @@ export {
   withInventories,
   withCreateInventory,
   withUpdateInventory,
-  withDeleteInventory
+  withDeleteInventory,
 } from "./hoc/inventory";
 
 export {
@@ -171,7 +171,7 @@ export {
   withWareHouses,
   withCreateWareHouse,
   withUpdateWareHouse,
-  withDeleteWareHouse
+  withDeleteWareHouse,
 } from "./hoc/wareHouse";
 
 export {
@@ -179,7 +179,7 @@ export {
   withSalesOrders,
   withCreateSalesOrder,
   withUpdateSalesOrder,
-  withDeleteSalesOrder
+  withDeleteSalesOrder,
 } from "./hoc/salesOrder";
 
 export {
@@ -187,7 +187,7 @@ export {
   withSalesOrderLines,
   withCreateSalesOrderLine,
   withUpdateSalesOrderLine,
-  withDeleteSalesOrderLine
+  withDeleteSalesOrderLine,
 } from "./hoc/salesOrderLine";
 
 export {
@@ -195,7 +195,7 @@ export {
   withSuppliers,
   withCreateSupplier,
   withUpdateSupplier,
-  withDeleteSupplier
+  withDeleteSupplier,
 } from "./hoc/supplier";
 
 export {
@@ -212,7 +212,7 @@ export {
   withPoReceipts,
   withCreatePoReceipt,
   withUpdatePoReceipt,
-  withDeletePoReceipt
+  withDeletePoReceipt,
 } from "./hoc/poReceipt";
 
 export {
@@ -220,21 +220,23 @@ export {
   withPurchaseOrderLines,
   withCreatePurchaseOrderLine,
   withUpdatePurchaseOrderLine,
-  withDeletePurchaseOrderLine
-} from "./hoc/purchaseOrderLine"
+  withDeletePurchaseOrderLine,
+} from "./hoc/purchaseOrderLine";
 
 export {
   withApInvoice,
   withApInvoices,
   withCreateApInvoice,
   withUpdateApInvoice,
-  withDeleteApInvoice
-} from "./hoc/apInvoice"
+  withDeleteApInvoice,
+} from "./hoc/apInvoice";
 
 export {
   withInventoryOnHand,
   withInventoryOnHands,
   withCreateInventoryOnHand,
   withUpdateInventoryOnHand,
-  withDeleteInventoryOnHand
-} from "./hoc/inventoryOnHand"
+  withDeleteInventoryOnHand,
+} from "./hoc/inventoryOnHand";
+
+export { withIntegrations } from "./hoc/integration";
