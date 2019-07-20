@@ -286,7 +286,7 @@ fragment TimeSheetFragment on TimeSheet {
     ...AttachmentFragment
   }
   company {
-    ...CompanyShortFragments
+    ...CompanyShortFragment
   }
   endsAt
   isArchived
