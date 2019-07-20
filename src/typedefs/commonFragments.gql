@@ -35,10 +35,11 @@ fragment PlanFragment on Plan {
   company {
     id
   }
-  is_active
-  is_archived
-  is_deleted
+  isActive
+  isArchived
+  isDeleted
   price
+  type
 }
 
 fragment AddressFragment on Address {
@@ -285,7 +286,7 @@ fragment TimeSheetFragment on TimeSheet {
     ...AttachmentFragment
   }
   company {
-    ...CompanyShortFragment
+    ...CompanyShortFragments
   }
   endsAt
   isArchived
