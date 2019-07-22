@@ -4,7 +4,6 @@
   "description": "Graphql services and typedefs for Kudoo",
   "main": "./build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "copy-typedefs": "ncp ./src/typedefs ./build/typedefs",
     "build": "babel src --out-dir ./build && npm run copy-typedefs",
     "prepublishOnly": "npm run build",
