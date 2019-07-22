@@ -9,7 +9,7 @@
     "prepublishOnly": "npm run build",
     "watch": "watch \"npm run build\" ./src",
     "version": "auto-changelog -p && git add CHANGELOG.md",
-    "release": "np --no-tests --cleanup --no-yarn"
+    "release": "np --no-yarn"
   },
   "author": "Kudoo Cloud Pty Ltd",
   "license": "MIT",
