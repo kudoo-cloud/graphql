@@ -1,11 +1,11 @@
-import * as ledgerPostingQuery from "typedefs/ledgerPosting.gql";
-import withMutation from "../withMutation";
+import { deleteLedgerPosting } from 'typedefs/ledgerPosting.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: ledgerPostingQuery.deleteLedgerPosting,
-    mutationName: "deleteLedgerPosting",
-    defaultPropName: "deleteLedgerPosting"
+    mutation: deleteLedgerPosting,
+    mutationName: 'deleteLedgerPosting',
+    defaultPropName: 'deleteLedgerPosting',
   });
 };

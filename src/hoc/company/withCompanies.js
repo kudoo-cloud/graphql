@@ -1,35 +1,33 @@
 /* @flow */
-import React from "react";
-import get from "lodash/get";
-import { graphql, compose } from "react-apollo";
-import * as companyQuery from "typedefs/company.gql";
+import React from 'react';
+import get from 'lodash/get';
+import { graphql, compose } from 'react-apollo';
+import { companies } from 'typedefs/company.gql';
 
-export default (config: any = () => {}, responseFun?: Function) => (
-  WrappedComponent: any
-) => {
-  let getInjectedPropName = (props: any) => {
+export default (config = () => {}, responseFun) => (WrappedComponent) => {
+  let getInjectedPropName = (props) => {
     let params = config(props);
-    return get(params, "name", "companies");
+    return get(params, 'name', 'companies');
   };
 
-  let withCompanies = (props: any) => {
+  let withCompanies = (props) => {
     return <WrappedComponent {...props} />;
   };
 
   return compose(
-    graphql(companyQuery.companies, {
-      options: props => {
+    graphql(companies, {
+      options: (props) => {
         const params = config(props);
         return {
           skip: params.skip,
-          variables: get(params, "variables", {
+          variables: get(params, 'variables', {
             joined: false,
-            created: false
-          })
+            created: false,
+          }),
         };
       },
       props: ({ data, ownProps }) => {
-        const companies = get(data, "companies", []);
+        const companies = get(data, 'companies', []);
         const propName = getInjectedPropName(ownProps);
         let resultProps;
         if (responseFun) {
@@ -38,17 +36,17 @@ export default (config: any = () => {}, responseFun?: Function) => (
         } else {
           // default response
           resultProps = {
-            data: companies
+            data: companies,
           };
         }
         return {
           [propName]: {
             ...resultProps,
             loading: data.loading,
-            refetch: data.refetch
-          }
+            refetch: data.refetch,
+          },
         };
-      }
+      },
     })
   )(withCompanies);
 };

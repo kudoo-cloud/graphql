@@ -1,24 +1,21 @@
-import graphqlRequest from "./Request";
-import * as InventoryQuery from "typedefs/inventory.gql";
+import graphqlRequest from './Request';
+import { inventory, createInventory } from 'typedefs/inventory.gql';
 
 class Inventory {
   static async createInventory({ data, userToken, companyToken } = {}) {
     graphqlRequest.userToken = userToken;
     graphqlRequest.companyToken = companyToken;
-    return graphqlRequest.call(
-      InventoryQuery.createInventory,
-      {
-        data
-      }
-    );
+    return graphqlRequest.call(createInventory, {
+      data,
+    });
   }
   static async getInventory(id, userToken, companyToken) {
     graphqlRequest.userToken = userToken;
     graphqlRequest.companyToken = companyToken;
     return await graphqlRequest
-      .getNode("inventory", InventoryQuery.inventory, id)
-      .then(inventoryObj => inventoryObj)
-      .catch(error => error);
+      .getNode('inventory', inventory, id)
+      .then((inventoryObj) => inventoryObj)
+      .catch((error) => error);
   }
 }
 

@@ -1,26 +1,20 @@
-import graphqlRequest from "./Request";
-import * as PatientQuery from "typedefs/patient.gql";
+import graphqlRequest from './Request';
+import { createPatient, patient } from 'typedefs/patient.gql';
 
 class Patient {
   static async createPatient({ data, userToken, companyToken } = {}) {
     graphqlRequest.userToken = userToken;
     graphqlRequest.companyToken = companyToken;
-    return graphqlRequest.call(
-      PatientQuery.createPatient,
-      {
-        data
-      }
-    );
+    return graphqlRequest.call(createPatient, {
+      data,
+    });
   }
   static async get({ where, userToken, companyToken } = {}) {
     graphqlRequest.userToken = userToken;
     graphqlRequest.companyToken = companyToken;
-    return graphqlRequest.call(
-      PatientQuery.patient,
-      {
-        where
-      }
-    );
+    return graphqlRequest.call(patient, {
+      where,
+    });
   }
 }
 

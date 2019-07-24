@@ -1,12 +1,12 @@
-import * as healthcareProviderQuery from "typedefs/healthcareProvider.gql";
-import withPaginationQuery from "../withPaginationQuery";
+import { healthcareProviders } from 'typedefs/healthcareProvider.gql';
+import withPaginationQuery from '../withPaginationQuery';
 
-export default (config: any = () => {}, responseFun?: Function) => {
+export default (config = () => {}, responseFun) => {
   return withPaginationQuery({
     config,
     responseFun,
-    defaultPropName: "healthcareProviders",
-    query: healthcareProviderQuery.healthcareProviders,
-    queryName: "healthcareProviders"
+    defaultPropName: 'healthcareProviders',
+    query: healthcareProviders,
+    queryName: 'healthcareProviders',
   });
 };

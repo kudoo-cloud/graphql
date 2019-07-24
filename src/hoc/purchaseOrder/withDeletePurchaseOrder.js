@@ -1,11 +1,11 @@
-import * as purchaseOrderQuery from "typedefs/purchaseOrder.gql"
-import withMutation from "../withMutation";
+import { deletePurchaseOrder } from 'typedefs/purchaseOrder.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: purchaseOrderQuery.deletePurchaseOrder,
-    mutationName: "deletePurchaseOrder",
-    defaultPropName: "deletePurchaseOrder"
+    mutation: deletePurchaseOrder,
+    mutationName: 'deletePurchaseOrder',
+    defaultPropName: 'deletePurchaseOrder',
   });
 };

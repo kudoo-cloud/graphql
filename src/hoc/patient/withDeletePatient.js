@@ -1,11 +1,11 @@
-import * as patientQuery from "typedefs/patient.gql";
-import withMutation from "../withMutation";
+import { deletePatient } from 'typedefs/patient.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: patientQuery.deletePatient,
-    mutationName: "deletePatient",
-    defaultPropName: "deletePatient"
+    mutation: deletePatient,
+    mutationName: 'deletePatient',
+    defaultPropName: 'deletePatient',
   });
 };

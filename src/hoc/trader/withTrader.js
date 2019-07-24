@@ -3,20 +3,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import get from 'lodash/get';
 import { graphql, compose, withApollo } from 'react-apollo';
-import * as traderQuery from 'typedefs/trader.gql';
+import { trader as traderQuery } from 'typedefs/trader.gql';
 
-export default (config: any = () => {}) => (WrappedComponent: any) => {
-  let getInjectedPropName = (props: any) => {
+export default (config = () => {}) => (WrappedComponent) => {
+  let getInjectedPropName = (props) => {
     let params = config(props);
     return get(params, 'name', 'trader');
   };
 
-  let withTrader = (props: any) => {
+  let withTrader = (props) => {
     const { trader, client, ...rest } = props; // eslint-disable-line
 
-    const _getTrader = async id => {
+    const _getTrader = async (id) => {
       let res = await client.query({
-        query: traderQuery.trader,
+        query: traderQuery,
         fetchPolicy: 'network-only',
         variables: {
           id,
@@ -46,8 +46,8 @@ export default (config: any = () => {}) => (WrappedComponent: any) => {
 
   return compose(
     withApollo,
-    graphql(traderQuery.trader, {
-      options: props => {
+    graphql(traderQuery, {
+      options: (props) => {
         const params = config(props);
         return {
           skip: get(params, 'traderId', '') === '',

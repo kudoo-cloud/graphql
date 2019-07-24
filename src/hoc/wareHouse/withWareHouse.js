@@ -1,13 +1,13 @@
-import * as wareHouseQuery from "typedefs/wareHouse.gql";
-import withSingleNodeQuery from "../withSingleNodeQuery";
+import { wareHouse } from 'typedefs/wareHouse.gql';
+import withSingleNodeQuery from '../withSingleNodeQuery';
 
 export default (config, responseFun) => {
   return withSingleNodeQuery({
     config,
     responseFun,
-    queryName: "wareHouse",
-    query: wareHouseQuery.wareHouse,
-    defaultPropName: "wareHouse",
-    functionName: "getWareHouse"
+    queryName: 'wareHouse',
+    query: wareHouse,
+    defaultPropName: 'wareHouse',
+    functionName: 'getWareHouse',
   });
 };

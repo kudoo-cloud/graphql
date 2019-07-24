@@ -1,11 +1,11 @@
-import * as inventoryQuery from "typedefs/inventory.gql";
-import withMutation from "../withMutation";
+import { updateInventory } from 'typedefs/inventory.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: inventoryQuery.updateInventory,
-    mutationName: "updateInventory",
-    defaultPropName: "updateInventory"
+    mutation: updateInventory,
+    mutationName: 'updateInventory',
+    defaultPropName: 'updateInventory',
   });
 };

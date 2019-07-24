@@ -1,11 +1,11 @@
-import * as query from "typedefs/inventoryOnHand.gql";
-import withMutation from "../withMutation";
+import { deleteInventoryOnHand } from 'typedefs/inventoryOnHand.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: query.deleteInventoryOnHand,
-    mutationName: "deleteInventoryOnHand",
-    defaultPropName: "deleteInventoryOnHand"
+    mutation: deleteInventoryOnHand,
+    mutationName: 'deleteInventoryOnHand',
+    defaultPropName: 'deleteInventoryOnHand',
   });
 };

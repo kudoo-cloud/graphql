@@ -1,11 +1,11 @@
-import * as salesOrderQuery from "typedefs/salesOrder.gql";
-import withMutation from "../withMutation";
+import { updateSalesOrder } from 'typedefs/salesOrder.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: salesOrderQuery.updateSalesOrder,
-    mutationName: "updateSalesOrder",
-    defaultPropName: "updateSalesOrder"
+    mutation: updateSalesOrder,
+    mutationName: 'updateSalesOrder',
+    defaultPropName: 'updateSalesOrder',
   });
 };

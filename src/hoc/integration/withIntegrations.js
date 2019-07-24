@@ -2,15 +2,15 @@
 import React from 'react';
 import get from 'lodash/get';
 import { graphql, compose } from 'react-apollo';
-import * as integrationQuery from 'typedefs/integration.gql';
+import { integrations } from 'typedefs/integration.gql';
 
-export default (config: any = () => {}) => (WrappedComponent: any) => {
-  let getInjectedPropName = (props: any) => {
+export default (config = () => {}) => (WrappedComponent) => {
+  let getInjectedPropName = (props) => {
     let params = config(props);
     return get(params, 'name', 'integrations');
   };
 
-  let withIntegrations = (props: any) => {
+  let withIntegrations = (props) => {
     const { integrations, ...rest } = props; //eslint-disable-line
     const propName = getInjectedPropName(props);
     const injectedProps = {
@@ -20,8 +20,8 @@ export default (config: any = () => {}) => (WrappedComponent: any) => {
   };
 
   return compose(
-    graphql(integrationQuery.integrations, {
-      options: props => {
+    graphql(integrations, {
+      options: (props) => {
         const params = config(props);
         return {
           variables: get(params, 'variables', {

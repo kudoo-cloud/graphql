@@ -1,12 +1,12 @@
-import * as patientQuery from "typedefs/patient.gql";
-import withPaginationQuery from "../withPaginationQuery";
+import { patients } from 'typedefs/patient.gql';
+import withPaginationQuery from '../withPaginationQuery';
 
-export default (config: any = () => {}, responseFun?: Function) => {
+export default (config = () => {}, responseFun) => {
   return withPaginationQuery({
     config,
     responseFun,
-    defaultPropName: "patients",
-    query: patientQuery.patients,
-    queryName: "patients"
+    defaultPropName: 'patients',
+    query: patients,
+    queryName: 'patients',
   });
 };

@@ -1,12 +1,12 @@
-import * as InvoiceQuery from "typedefs/invoice.gql";
-import withPaginationQuery from "../withPaginationQuery";
+import { invoices } from 'typedefs/invoice.gql';
+import withPaginationQuery from '../withPaginationQuery';
 
-export default (config: any = () => {}, responseFun?: Function) => {
+export default (config = () => {}, responseFun) => {
   return withPaginationQuery({
     config,
     responseFun,
-    defaultPropName: "invoices",
-    query: InvoiceQuery.invoices,
-    queryName: "invoices"
+    defaultPropName: 'invoices',
+    query: invoices,
+    queryName: 'invoices',
   });
 };

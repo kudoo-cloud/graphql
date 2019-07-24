@@ -1,11 +1,11 @@
-import * as query from "typedefs/ledgerJournal.gql";
-import withMutation from "../withMutation";
+import { createLedgerJournal } from 'typedefs/ledgerJournal.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: query.createLedgerJournal,
-    mutationName: "createLedgerJournal",
-    defaultPropName: "createLedgerJournal"
+    mutation: createLedgerJournal,
+    mutationName: 'createLedgerJournal',
+    defaultPropName: 'createLedgerJournal',
   });
 };

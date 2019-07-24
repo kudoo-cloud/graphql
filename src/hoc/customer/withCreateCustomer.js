@@ -1,11 +1,11 @@
-import * as customerQuery from "typedefs/customer.gql";
-import withMutation from "../withMutation";
+import { createCustomer } from 'typedefs/customer.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: customerQuery.createCustomer,
-    mutationName: "createCustomer",
-    defaultPropName: "createCustomer"
+    mutation: createCustomer,
+    mutationName: 'createCustomer',
+    defaultPropName: 'createCustomer',
   });
 };

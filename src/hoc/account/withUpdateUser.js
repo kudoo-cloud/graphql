@@ -1,11 +1,11 @@
-import * as AccountQuery from "typedefs/account.gql";
-import withMutation from "../withMutation";
+import { updateUser } from 'typedefs/account.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: AccountQuery.updateUser,
-    mutationName: "updateUser",
-    defaultPropName: "updateUser"
+    mutation: updateUser,
+    mutationName: 'updateUser',
+    defaultPropName: 'updateUser',
   });
 };

@@ -1,11 +1,11 @@
-import * as projectQuery from "typedefs/project.gql";
-import withMutation from "../withMutation";
+import { deleteProject } from 'typedefs/project.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: projectQuery.deleteProject,
-    mutationName: "deleteProject",
-    defaultPropName: "deleteProject"
+    mutation: deleteProject,
+    mutationName: 'deleteProject',
+    defaultPropName: 'deleteProject',
   });
 };

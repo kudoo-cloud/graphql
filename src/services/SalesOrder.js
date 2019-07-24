@@ -1,24 +1,21 @@
-import graphqlRequest from "./Request";
-import * as SalesOrderQuery from "typedefs/salesOrder.gql";
+import graphqlRequest from './Request';
+import { createSalesOrder, salesOrder as orderQuery } from 'typedefs/salesOrder.gql';
 
 class SalesOrder {
   static async createSalesOrder({ data, userToken, companyToken } = {}) {
     graphqlRequest.userToken = userToken;
     graphqlRequest.companyToken = companyToken;
-    return graphqlRequest.call(
-      SalesOrderQuery.createSalesOrder,
-      {
-        data
-      }
-    );
+    return graphqlRequest.call(createSalesOrder, {
+      data,
+    });
   }
   static async getSalesOrder(id, userToken, companyToken) {
     graphqlRequest.userToken = userToken;
     graphqlRequest.companyToken = companyToken;
     return await graphqlRequest
-      .getNode("SalesOrder", SalesOrderQuery.salesOrder, id)
-      .then(salesOrderObj => salesOrderObj)
-      .catch(error => error);
+      .getNode('SalesOrder', orderQuery, id)
+      .then((salesOrderObj) => salesOrderObj)
+      .catch((error) => error);
   }
 }
 

@@ -1,17 +1,24 @@
-import graphqlRequest from "./Request";
-import * as PurchaseOrderQuery from "typedefs/purchaseOrder.gql";
+import graphqlRequest from './Request';
+import {
+  purchaseOrder,
+  purchaseOrders as ordersQuery,
+} from 'typedefs/purchaseOrder.gql';
 
 class PurchaseOrders {
   static async get(id) {
-    return graphqlRequest.getNode("purchaseOrder", PurchaseOrderQuery.purchaseOrder, id);
+    return graphqlRequest.getNode('purchaseOrder', purchaseOrder, id);
   }
 
   static async getPurchaseOrders({ where, userToken, companyToken } = {}) {
     graphqlRequest.userToken = userToken;
     graphqlRequest.companyToken = companyToken;
-    let purchaseOrders = await graphqlRequest.getAll("purchaseOrders",PurchaseOrderQuery.purchaseOrders,{
-      where
-    });
+    let purchaseOrders = await graphqlRequest.getAll(
+      'purchaseOrders',
+      ordersQuery,
+      {
+        where,
+      }
+    );
     return purchaseOrders;
   }
 }

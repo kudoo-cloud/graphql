@@ -1,12 +1,12 @@
-import * as serviceQuery from "typedefs/service.gql";
-import withPaginationQuery from "../withPaginationQuery";
+import { services } from 'typedefs/service.gql';
+import withPaginationQuery from '../withPaginationQuery';
 
-export default (config: any = () => {}, responseFun?: Function) => {
+export default (config = () => {}, responseFun) => {
   return withPaginationQuery({
     config,
     responseFun,
-    defaultPropName: "services",
-    query: serviceQuery.services,
-    queryName: "services"
+    defaultPropName: 'services',
+    query: services,
+    queryName: 'services',
   });
 };

@@ -1,32 +1,37 @@
 const plugins = [
-  "@babel/plugin-transform-async-to-generator",
-  "@babel/plugin-proposal-class-properties",
-  "import-graphql",
+  '@babel/plugin-transform-async-to-generator',
+  '@babel/plugin-proposal-class-properties',
   [
-    "module-resolver",
+    'import-graphql',
     {
-      root: ["."],
-      alias: {
-        "typedefs/*": "./src/typedefs/",
-        "services/*": "./src/services/",
-        "hoc/*": "./src/hoc/",
-        "helpers/*": "./src/helpers/"
-      }
-    }
+      runtime: true,
+    },
   ],
   [
-    "@babel/plugin-transform-runtime",
+    'module-resolver',
+    {
+      root: ['.'],
+      alias: {
+        'typedefs/*': './src/typedefs/',
+        'services/*': './src/services/',
+        'hoc/*': './src/hoc/',
+        'helpers/*': './src/helpers/',
+      },
+    },
+  ],
+  [
+    '@babel/plugin-transform-runtime',
     {
       helpers: true,
-      regenerator: true
-    }
-  ]
+      regenerator: true,
+    },
+  ],
 ];
 
 const presets = [
-  "@babel/preset-env",
-  "@babel/preset-react",
-  "@babel/preset-flow"
+  '@babel/preset-env',
+  '@babel/preset-react',
+  '@babel/preset-flow',
 ];
 
 module.exports = { plugins, presets };

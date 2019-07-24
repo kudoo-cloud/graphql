@@ -2,21 +2,21 @@
 import React from 'react';
 import get from 'lodash/get';
 import { graphql, compose, withApollo } from 'react-apollo';
-import * as TimeSheetEntryQuery from 'typedefs/timeSheetEntry.gql';
+import {
+  timeSheetEntries as tQuery,
+} from 'typedefs/timeSheetEntry.gql';
 
-export default (config: any = () => {}, responseFun?: Function) => (
-  WrappedComponent: any
-) => {
-  let getInjectedPropName = (props: any) => {
+export default (config = () => {}, responseFun) => (WrappedComponent) => {
+  let getInjectedPropName = (props) => {
     let params = config(props);
     return get(params, 'name', 'timeSheetEntries');
   };
 
-  let withTimesheetEntries = (props: any) => {
+  let withTimesheetEntries = (props) => {
     const { client, ...rest } = props; //eslint-disable-line
-    const _getTimesheetEntries = async options => {
+    const _getTimesheetEntries = async (options) => {
       let res = await client.query({
-        query: TimeSheetEntryQuery.timeSheetEntries,
+        query: tQuery,
         variables: options.variables,
       });
       return res;
@@ -29,8 +29,8 @@ export default (config: any = () => {}, responseFun?: Function) => (
 
   return compose(
     withApollo,
-    graphql(TimeSheetEntryQuery.timeSheetEntries, {
-      options: props => {
+    graphql(tQuery, {
+      options: (props) => {
         const params = config(props);
         return {
           skip: get(params, 'skip', false) === true,

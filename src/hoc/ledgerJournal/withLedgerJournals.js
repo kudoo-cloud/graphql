@@ -1,12 +1,12 @@
-import * as query from "typedefs/ledgerJournal.gql";
-import withPaginationQuery from "../withPaginationQuery";
+import { ledgerJournals } from 'typedefs/ledgerJournal.gql';
+import withPaginationQuery from '../withPaginationQuery';
 
-export default (config: any = () => {}, responseFun?: Function) => {
+export default (config = () => {}, responseFun) => {
   return withPaginationQuery({
     config,
     responseFun,
-    defaultPropName: "ledgerJournals",
-    query: query.ledgerJournals,
-    queryName: "ledgerJournals"
+    defaultPropName: 'ledgerJournals',
+    query: ledgerJournals,
+    queryName: 'ledgerJournals',
   });
 };

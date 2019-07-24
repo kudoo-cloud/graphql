@@ -1,12 +1,12 @@
-import * as apInvoiceQuery from "typedefs/apInvoice.gql";
-import withPaginationQuery from "../withPaginationQuery";
+import { apInvoices } from 'typedefs/apInvoice.gql';
+import withPaginationQuery from '../withPaginationQuery';
 
 export default (config, responseFun) => {
   return withPaginationQuery({
     config,
     responseFun,
-    defaultPropName: "apInvoices",
-    query: apInvoiceQuery.apInvoices,
-    queryName: "apInvoices"
+    defaultPropName: 'apInvoices',
+    query: apInvoices,
+    queryName: 'apInvoices',
   });
 };
