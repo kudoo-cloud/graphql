@@ -1,11 +1,11 @@
-import * as AccountQuery from "typedefs/account.gql";
-import withMutation from "../withMutation";
+import { resetPassword } from 'typedefs/account.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: AccountQuery.resetPassword,
-    mutationName: "resetPassword",
-    defaultPropName: "resetPassword"
+    mutation: resetPassword,
+    mutationName: 'resetPassword',
+    defaultPropName: 'resetPassword',
   });
 };

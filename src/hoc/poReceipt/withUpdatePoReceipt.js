@@ -1,11 +1,11 @@
-import * as poReceiptQuery from "typedefs/poReceipt.gql"
-import withMutation from "../withMutation";
+import { updatePoReceipt } from 'typedefs/poReceipt.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: poReceiptQuery.updatePoReceipt,
-    mutationName: "updatePoReceipt",
-    defaultPropName: "updatePoReceipt"
+    mutation: updatePoReceipt,
+    mutationName: 'updatePoReceipt',
+    defaultPropName: 'updatePoReceipt',
   });
 };

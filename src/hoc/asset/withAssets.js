@@ -1,12 +1,12 @@
-import * as assetQuery from "typedefs/asset.gql";
-import withPaginationQuery from "../withPaginationQuery";
+import { assets } from 'typedefs/asset.gql';
+import withPaginationQuery from '../withPaginationQuery';
 
-export default (config: any = () => {}, responseFun?: Function) => {
+export default (config = () => {}, responseFun) => {
   return withPaginationQuery({
     config,
     responseFun,
-    defaultPropName: "assets",
-    query: assetQuery.assets,
-    queryName: "assets"
+    defaultPropName: 'assets',
+    query: assets,
+    queryName: 'assets',
   });
 };

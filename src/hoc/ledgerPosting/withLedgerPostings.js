@@ -1,12 +1,12 @@
-import * as ledgerPostingQuery from "typedefs/ledgerPosting.gql";
-import withPaginationQuery from "../withPaginationQuery";
+import { ledgerPostings } from 'typedefs/ledgerPosting.gql';
+import withPaginationQuery from '../withPaginationQuery';
 
-export default (config: any = () => {}, responseFun?: Function) => {
+export default (config = () => {}, responseFun) => {
   return withPaginationQuery({
     config,
     responseFun,
-    defaultPropName: "ledgerPostings",
-    query: ledgerPostingQuery.ledgerPostings,
-    queryName: "ledgerPostings"
+    defaultPropName: 'ledgerPostings',
+    query: ledgerPostings,
+    queryName: 'ledgerPostings',
   });
 };

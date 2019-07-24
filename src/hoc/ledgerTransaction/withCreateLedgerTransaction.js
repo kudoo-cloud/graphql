@@ -1,11 +1,11 @@
-import * as ledgerTransactionQuery from "typedefs/ledgerTransaction.gql";
-import withMutation from "../withMutation";
+import { createLedgerTransaction } from 'typedefs/ledgerTransaction.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: ledgerTransactionQuery.createLedgerTransaction,
-    mutationName: "createLedgerTransaction",
-    defaultPropName: "createLedgerTransaction"
+    mutation: createLedgerTransaction,
+    mutationName: 'createLedgerTransaction',
+    defaultPropName: 'createLedgerTransaction',
   });
 };

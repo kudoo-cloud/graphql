@@ -1,11 +1,11 @@
-import * as TimeSheetsQuery from "typedefs/timeSheet.gql";
-import withMutation from "../withMutation";
+import { createTimeSheet } from 'typedefs/timeSheet.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: TimeSheetsQuery.createTimeSheet,
-    mutationName: "createTimeSheet",
-    defaultPropName: "createTimeSheet"
+    mutation: createTimeSheet,
+    mutationName: 'createTimeSheet',
+    defaultPropName: 'createTimeSheet',
   });
 };

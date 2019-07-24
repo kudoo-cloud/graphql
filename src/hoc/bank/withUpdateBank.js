@@ -1,11 +1,11 @@
-import * as bankQuery from "typedefs/bank.gql";
-import withMutation from "../withMutation";
+import { updateBank } from 'typedefs/bank.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: bankQuery.updateBank,
-    mutationName: "updateBank",
-    defaultPropName: "updateBank"
+    mutation: updateBank,
+    mutationName: 'updateBank',
+    defaultPropName: 'updateBank',
   });
 };

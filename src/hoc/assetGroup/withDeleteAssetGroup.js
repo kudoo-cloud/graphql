@@ -1,11 +1,11 @@
-import * as query from "typedefs/assetGroup.gql";
-import withMutation from "../withMutation";
+import { deleteAssetGroup } from 'typedefs/assetGroup.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: query.deleteAssetGroup,
-    mutationName: "deleteAssetGroup",
-    defaultPropName: "deleteAssetGroup"
+    mutation: deleteAssetGroup,
+    mutationName: 'deleteAssetGroup',
+    defaultPropName: 'deleteAssetGroup',
   });
 };

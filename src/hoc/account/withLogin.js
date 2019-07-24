@@ -1,11 +1,11 @@
-import * as AccountQuery from "typedefs/account.gql";
-import withMutation from "../withMutation";
+import { login } from 'typedefs/account.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: AccountQuery.login,
-    mutationName: "login",
-    defaultPropName: "login"
+    mutation: login,
+    mutationName: 'login',
+    defaultPropName: 'login',
   });
 };

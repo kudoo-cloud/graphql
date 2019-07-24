@@ -1,11 +1,11 @@
-import * as pbsOrganisationQuery from "typedefs/pbsOrganisation.gql";
-import withMutation from "../withMutation";
+import { updatePBSOrganisation } from 'typedefs/pbsOrganisation.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: pbsOrganisationQuery.updatePBSOrganisation,
-    mutationName: "updatePBSOrganisation",
-    defaultPropName: "updatePBSOrganisation"
+    mutation: updatePBSOrganisation,
+    mutationName: 'updatePBSOrganisation',
+    defaultPropName: 'updatePBSOrganisation',
   });
 };

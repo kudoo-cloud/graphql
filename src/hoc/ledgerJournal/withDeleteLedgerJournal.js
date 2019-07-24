@@ -1,11 +1,11 @@
-import * as query from "typedefs/ledgerJournal.gql";
-import withMutation from "../withMutation";
+import { deleteLedgerJournal } from 'typedefs/ledgerJournal.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: query.deleteLedgerJournal,
-    mutationName: "deleteLedgerJournal",
-    defaultPropName: "deleteLedgerJournal"
+    mutation: deleteLedgerJournal,
+    mutationName: 'deleteLedgerJournal',
+    defaultPropName: 'deleteLedgerJournal',
   });
 };

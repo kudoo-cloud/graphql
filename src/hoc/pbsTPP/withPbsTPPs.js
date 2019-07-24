@@ -1,12 +1,12 @@
-import * as pbsTPPQuery from "typedefs/pbsTPP.gql";
-import withPaginationQuery from "../withPaginationQuery";
+import { pbsTpps } from 'typedefs/pbsTPP.gql';
+import withPaginationQuery from '../withPaginationQuery';
 
 export default (config, responseFun) => {
   return withPaginationQuery({
     config,
     responseFun,
-    defaultPropName: "pbsTPPs",
-    query: pbsTPPQuery.pbsTpps,
-    queryName: "pbsTPPs"
+    defaultPropName: 'pbsTPPs',
+    query: pbsTpps,
+    queryName: 'pbsTPPs',
   });
 };

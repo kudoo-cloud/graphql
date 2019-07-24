@@ -2,16 +2,16 @@
 import React from 'react';
 import get from 'lodash/get';
 import { graphql, compose } from 'react-apollo';
-import * as companyQuery from 'typedefs/company.gql';
-import * as accountQuery from 'typedefs/account.gql';
+import { companies } from 'typedefs/company.gql';
+import { me } from 'typedefs/account.gql';
 
-export default (config: any = () => {}) => (WrappedComponent: any) => {
-  let getInjectedPropName = (props: any) => {
+export default (config = () => {}) => (WrappedComponent) => {
+  let getInjectedPropName = (props) => {
     let params = config(props);
     return get(params, 'name', 'companies');
   };
 
-  let withUserCompanies = (props: any) => {
+  let withUserCompanies = (props) => {
     const { companies, ...rest } = props; //eslint-disable-line
     const propName = getInjectedPropName(props);
     const injectedProps = {
@@ -21,8 +21,8 @@ export default (config: any = () => {}) => (WrappedComponent: any) => {
   };
 
   return compose(
-    graphql(companyQuery.companies, {
-      options: props => {
+    graphql(companies, {
+      options: (props) => {
         const params = config(props);
         return {
           skip: get(params, 'skip', false) === true,
@@ -43,8 +43,8 @@ export default (config: any = () => {}) => (WrappedComponent: any) => {
         };
       },
     }),
-    graphql(accountQuery.me, {
-      options: props => {
+    graphql(me, {
+      options: (props) => {
         const params = config(props);
         return {
           skip: get(params, 'skip', false) === true,

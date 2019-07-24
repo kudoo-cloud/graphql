@@ -2,18 +2,18 @@
 import React from 'react';
 import get from 'lodash/get';
 import { graphql, compose, withApollo } from 'react-apollo';
-import * as invoiceHookupQuery from 'typedefs/invoiceHookup.gql';
+import { invoiceHookups } from 'typedefs/invoiceHookup.gql';
 
-export default (config: any = () => {}) => (WrappedComponent: any) => {
-  let getInjectedPropName = (props: any) => {
+export default (config = () => {}) => (WrappedComponent) => {
+  let getInjectedPropName = (props) => {
     let params = config(props);
     return get(params, 'name', 'invoiceHookups');
   };
 
-  let withInvoiceHookups = (props: any) => {
-    const _getInvoiceHookups = async options => {
+  let withInvoiceHookups = (props) => {
+    const _getInvoiceHookups = async (options) => {
       let res = await props.client.query({
-        query: invoiceHookupQuery.invoiceHookups,
+        query: invoiceHookups,
         variables: options.variables,
       });
       return res;
@@ -26,8 +26,8 @@ export default (config: any = () => {}) => (WrappedComponent: any) => {
 
   return compose(
     withApollo,
-    graphql(invoiceHookupQuery.invoiceHookups, {
-      options: props => {
+    graphql(invoiceHookups, {
+      options: (props) => {
         const params = config(props);
         return {
           variables: get(params, 'variables', {

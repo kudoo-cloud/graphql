@@ -1,12 +1,12 @@
-import * as projectQuery from 'typedefs/project.gql';
-import withSingleNodeQuery from "../withSingleNodeQuery";
+import { project } from 'typedefs/project.gql';
+import withSingleNodeQuery from '../withSingleNodeQuery';
 
 export default (config, responseFun) => {
   return withSingleNodeQuery({
     config,
     responseFun,
-    queryName: "project",
-    query: projectQuery.project,
-    defaultPropName: "project"
+    queryName: 'project',
+    query: project,
+    defaultPropName: 'project',
   });
 };

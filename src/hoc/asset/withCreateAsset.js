@@ -1,11 +1,11 @@
-import * as query from "typedefs/asset.gql";
-import withMutation from "../withMutation";
+import { createAsset } from 'typedefs/asset.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: query.createAsset,
-    mutationName: "createAsset",
-    defaultPropName: "createAsset"
+    mutation: createAsset,
+    mutationName: 'createAsset',
+    defaultPropName: 'createAsset',
   });
 };

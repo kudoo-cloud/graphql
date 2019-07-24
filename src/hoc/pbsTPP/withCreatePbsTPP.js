@@ -1,11 +1,11 @@
-import * as pbsTPPQuery from "typedefs/pbsTPP.gql";
-import withMutation from "../withMutation";
+import { createPbsTPP } from 'typedefs/pbsTPP.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: pbsTPPQuery.createPbsTPP,
-    mutationName: "createPbsTPP",
-    defaultPropName: "createPbsTPP"
+    mutation: createPbsTPP,
+    mutationName: 'createPbsTPP',
+    defaultPropName: 'createPbsTPP',
   });
 };

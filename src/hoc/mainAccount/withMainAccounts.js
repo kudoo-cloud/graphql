@@ -1,12 +1,12 @@
-import * as mainAccountQuery from "typedefs/mainAccount.gql";
-import withPaginationQuery from "../withPaginationQuery";
+import { mainAccounts } from 'typedefs/mainAccount.gql';
+import withPaginationQuery from '../withPaginationQuery';
 
-export default (config: any = () => {}, responseFun?: Function) => {
+export default (config = () => {}, responseFun) => {
   return withPaginationQuery({
     config,
     responseFun,
-    defaultPropName: "mainAccounts",
-    query: mainAccountQuery.mainAccounts,
-    queryName: "mainAccounts"
+    defaultPropName: 'mainAccounts',
+    query: mainAccounts,
+    queryName: 'mainAccounts',
   });
 };

@@ -1,12 +1,16 @@
-import graphqlRequest from "./Request";
-import * as PbsTPPQuery from "typedefs/pbsTPP.gql";
+import graphqlRequest from './Request';
+import {
+  createPbsTPP as createQuery,
+  pbsTPP,
+  pbsTpps,
+} from 'typedefs/pbsTPP.gql';
 
 class PbsTPP {
   static async createPbsTPP({ data, userToken, companyToken } = {}) {
     graphqlRequest.userToken = userToken;
     graphqlRequest.companyToken = companyToken;
-    return graphqlRequest.call(PbsTPPQuery.createPbsTPP, {
-      data
+    return graphqlRequest.call(createQuery, {
+      data,
     });
   }
 
@@ -14,9 +18,9 @@ class PbsTPP {
     graphqlRequest.userToken = userToken;
     graphqlRequest.companyToken = companyToken;
     return await graphqlRequest
-      .getNode("Pbs TPP", PbsTPPQuery.pbsTPP, id)
-      .then(pbsTPPObj => pbsTPPObj)
-      .catch(error => error);
+      .getNode('Pbs TPP', pbsTPP, id)
+      .then((pbsTPPObj) => pbsTPPObj)
+      .catch((error) => error);
   }
 
   static async getAllPbsTPP({
@@ -26,16 +30,16 @@ class PbsTPP {
     after,
     before,
     first,
-    last
+    last,
   } = {}) {
-    return await graphqlRequest.getAll("pbsTPPs", PbsTPPQuery.pbsTpps, {
+    return await graphqlRequest.getAll('pbsTPPs', pbsTpps, {
       where,
       orderBy,
       skip,
       after,
       before,
       first,
-      last
+      last,
     });
   }
 }

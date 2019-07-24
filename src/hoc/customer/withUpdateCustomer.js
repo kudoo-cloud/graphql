@@ -1,11 +1,11 @@
-import * as customerQuery from "typedefs/customer.gql";
-import withMutation from "../withMutation";
+import { updateCustomer } from 'typedefs/customer.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: customerQuery.updateCustomer,
-    mutationName: "updateCustomer",
-    defaultPropName: "updateCustomer"
+    mutation: updateCustomer,
+    mutationName: 'updateCustomer',
+    defaultPropName: 'updateCustomer',
   });
 };

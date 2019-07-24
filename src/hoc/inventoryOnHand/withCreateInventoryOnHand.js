@@ -1,11 +1,11 @@
-import * as query from "typedefs/inventoryOnHand.gql";
-import withMutation from "../withMutation";
+import { createInventoryOnHand } from 'typedefs/inventoryOnHand.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: query.createInventoryOnHand,
-    mutationName: "createInventoryOnHand",
-    defaultPropName: "createInventoryOnHand"
+    mutation: createInventoryOnHand,
+    mutationName: 'createInventoryOnHand',
+    defaultPropName: 'createInventoryOnHand',
   });
 };

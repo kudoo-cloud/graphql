@@ -1,11 +1,11 @@
-import * as wareHouseQuery from "typedefs/wareHouse.gql";
-import withMutation from "../withMutation";
+import { deleteWareHouse } from 'typedefs/wareHouse.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: wareHouseQuery.deleteWareHouse,
-    mutationName: "deleteWareHouse",
-    defaultPropName: "deleteWareHouse"
+    mutation: deleteWareHouse,
+    mutationName: 'deleteWareHouse',
+    defaultPropName: 'deleteWareHouse',
   });
 };

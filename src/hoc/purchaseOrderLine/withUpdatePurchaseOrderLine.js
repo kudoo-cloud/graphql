@@ -1,11 +1,11 @@
-import * as purchaseOrderLineQuery from "typedefs/purchaseOrderLine.gql"
-import withMutation from "../withMutation";
+import { updatePurchaseOrderLine } from 'typedefs/purchaseOrderLine.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: purchaseOrderLineQuery.updatePurchaseOrderLine,
-    mutationName: "updatePurchaseOrderLine",
-    defaultPropName: "updatePurchaseOrderLine"
+    mutation: updatePurchaseOrderLine,
+    mutationName: 'updatePurchaseOrderLine',
+    defaultPropName: 'updatePurchaseOrderLine',
   });
 };

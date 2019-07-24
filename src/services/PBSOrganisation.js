@@ -1,43 +1,44 @@
-import graphqlRequest from "./Request";
-import * as PBSOrganisationQuery from "typedefs/pbsOrganisation.gql";
+import graphqlRequest from './Request';
+import {
+  createPBSOrganisation as createQuery,
+  pbsOrganisation,
+  pbsOrganisations,
+} from 'typedefs/pbsOrganisation.gql';
 
 class PBSOrganisation {
   static async createPBSOrganisation({ data, userToken, companyToken } = {}) {
     graphqlRequest.userToken = userToken;
     graphqlRequest.companyToken = companyToken;
-    return graphqlRequest.call(
-      PBSOrganisationQuery.createPbsOrganisation,
-      {
-        data
-      }
-    );
+    return graphqlRequest.call(createQuery, {
+      data,
+    });
   }
   static async getPBSOrganisation(id, userToken, companyToken) {
     graphqlRequest.userToken = userToken;
     graphqlRequest.companyToken = companyToken;
     return await graphqlRequest
-      .getNode("Organisation", PBSOrganisationQuery.pbsOrganisation, id)
-      .then(pbsOrganisationObj => pbsOrganisationObj)
-      .catch(error => error);
-	}
-	
-	static async getAllPbsOrganisations({
+      .getNode('Organisation', pbsOrganisation, id)
+      .then((pbsOrganisationObj) => pbsOrganisationObj)
+      .catch((error) => error);
+  }
+
+  static async getAllPbsOrganisations({
     where,
     orderBy,
     skip,
     after,
     before,
     first,
-    last
+    last,
   } = {}) {
-    return await graphqlRequest.getAll("pbsOrganisations", PBSOrganisationQuery.pbsOrganisations, {
+    return await graphqlRequest.getAll('pbsOrganisations', pbsOrganisations, {
       where,
       orderBy,
       skip,
       after,
       before,
       first,
-      last
+      last,
     });
   }
 }

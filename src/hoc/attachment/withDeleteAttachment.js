@@ -1,11 +1,11 @@
-import * as AttachmentQuery from "typedefs/attachment.gql";
-import withMutation from "../withMutation";
+import { deleteAttachment } from 'typedefs/attachment.gql';
+import withMutation from '../withMutation';
 
-export default config => {
+export default (config) => {
   return withMutation({
     config,
-    mutation: AttachmentQuery.deleteAttachment,
-    mutationName: "deleteAttachment",
-    defaultPropName: "deleteAttachment"
+    mutation: deleteAttachment,
+    mutationName: 'deleteAttachment',
+    defaultPropName: 'deleteAttachment',
   });
 };
