@@ -240,3 +240,11 @@ export {
 } from "./hoc/inventoryOnHand";
 
 export { withIntegrations } from "./hoc/integration";
+
+export {
+  withBank,
+  withBanks,
+  withCreateBank,
+  withDeleteBank,
+  withUpdateBank,
+} from "./hoc/bank";
