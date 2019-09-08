@@ -103,6 +103,7 @@ fragment CompanyFragment on Company {
   }
   name
   salesTax
+  HPIO
   timeSheetSettings
   # {
   #   autoSendInvoices
