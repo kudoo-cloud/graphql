@@ -105,6 +105,7 @@ fragment CompanyFragment on Company {
   salesTax
   HPIO
   timeSheetSettings
+  stripeCustomerId
   # {
   #   autoSendInvoices
   #   groupEvery
