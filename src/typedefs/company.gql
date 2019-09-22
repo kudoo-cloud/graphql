@@ -34,8 +34,18 @@ mutation invite($email: String!, $role: CompanyMemberRole!, $baseURL: String!) {
 }
 
 # resendInvite
-mutation resendInvite($email: String!, $role: CompanyMemberRole!, $companyMemberId: ID!, $baseURL: String!) {
-  resendInvite(email: $email, role: $role, companyMemberId: $companyMemberId, baseURL: $baseURL) {
+mutation resendInvite(
+  $email: String!
+  $role: CompanyMemberRole!
+  $companyMemberId: ID!
+  $baseURL: String!
+) {
+  resendInvite(
+    email: $email
+    role: $role
+    companyMemberId: $companyMemberId
+    baseURL: $baseURL
+  ) {
     success
   }
 }
@@ -51,5 +61,21 @@ mutation deleteCompany($id: ID!) {
 mutation undeleteCompany($id: ID!) {
   undeleteCompany(id: $id) {
     ...CompanyFragment
+  }
+}
+
+mutation changeSubscriptionPlan(
+  $sourceToken: String
+  $toPlan: String
+  $quantity: Float
+  $type: STRIPE_CHANGE_PLAN_TYPE!
+) {
+  changeSubscriptionPlan(
+    sourceToken: $sourceToken
+    toPlan: $toPlan
+    quantity: $quantity
+    type: $type
+  ) {
+    success
   }
 }

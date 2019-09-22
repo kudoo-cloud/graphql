@@ -40,6 +40,7 @@ export {
   withUpdateCompanyMember,
   withInviteMember,
   withResendInvite,
+  withChangeSubscriptionPlan,
 } from "./hoc/company";
 
 export {
