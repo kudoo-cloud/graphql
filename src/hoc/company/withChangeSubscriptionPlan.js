@@ -1,4 +1,4 @@
-import { changeSubscriptionPlan } from "typedefs/companyUsers.gql";
+import { changeSubscriptionPlan } from "typedefs/company.gql";
 import withMutation from "../withMutation";
 
 export default (config) => {
