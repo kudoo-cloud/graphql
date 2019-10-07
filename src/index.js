@@ -249,3 +249,11 @@ export {
   withDeleteBank,
   withUpdateBank,
 } from "./hoc/bank";
+
+export {
+  withPatient,
+  withPatients,
+  withCreatePatient,
+  withUpdatePatient,
+  withDeletePatient,
+} from "./hoc/patient";
