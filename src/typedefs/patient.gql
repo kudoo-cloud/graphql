@@ -61,3 +61,10 @@ mutation deletePatient($where: WhereUniqueInput!) {
     ...PatientFragment
   }
 }
+
+# Upload Bulk Patients
+mutation uploadBulkPatients($data: [kBulkPatientUploadData!]!) {
+  uploadBulkPatients(data: $data) {
+    success
+  }
+}

@@ -256,4 +256,5 @@ export {
   withCreatePatient,
   withUpdatePatient,
   withDeletePatient,
+  withUploadBulkPatients,
 } from "./hoc/patient";
