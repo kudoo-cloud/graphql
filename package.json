@@ -1,6 +1,6 @@
 {
   "name": "@kudoo/graphql",
-  "version": "3.0.7",
+  "version": "3.0.8",
   "description": "Graphql services and typedefs for Kudoo",
   "main": "./build/index.js",
   "scripts": {
