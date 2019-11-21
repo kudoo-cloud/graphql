@@ -258,3 +258,11 @@ export {
   withDeletePatient,
   withUploadBulkPatients,
 } from "./hoc/patient";
+
+export {
+  withCreateHealthcareProvider,
+  withDeleteHealthcareProvider,
+  withHealthcareProvider,
+  withHealthcareProviders,
+  withUpdateHealthcareProvider,
+} from "./hoc/healthcareProvider";
