@@ -1,7 +1,7 @@
 #import "./commonFragments.gql"
 
 query healthcareProviders(
-  $where: WhereUniqueInput
+  $where: HealthcareProviderWhereInput
   $orderBy: HealthcareProviderOrderByInput
   $skip: Int
   $after: String
